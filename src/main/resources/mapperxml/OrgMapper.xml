@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.OrgMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Org">
+    <!--@mbg.generated-->
+    <!--@Table org-->
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="oname" jdbcType="VARCHAR" property="oname" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    oid, oname, `type`, url, logo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from org
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from org
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="oid" keyProperty="oid" parameterType="com.leexam.entity.Org" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org (oname, `type`, url, 
+      logo)
+    values (#{oname,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="oid" keyProperty="oid" parameterType="com.leexam.entity.Org" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into org
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oname != null">
+        oname,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oname != null">
+        #{oname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Org">
+    <!--@mbg.generated-->
+    update org
+    <set>
+      <if test="oname != null">
+        oname = #{oname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Org">
+    <!--@mbg.generated-->
+    update org
+    set oname = #{oname,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>

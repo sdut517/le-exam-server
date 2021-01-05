@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.UnitMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Unit">
+    <!--@mbg.generated-->
+    <!--@Table unit-->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="desc_title" jdbcType="LONGVARCHAR" property="descTitle" />
+    <result column="desc_body" jdbcType="LONGVARCHAR" property="descBody" />
+    <result column="is_out_of_order1" jdbcType="INTEGER" property="isOutOfOrder1" />
+    <result column="is_out_of_order2" jdbcType="INTEGER" property="isOutOfOrder2" />
+    <result column="is_ban_turn_over" jdbcType="INTEGER" property="isBanTurnOver" />
+    <result column="at_least_time" jdbcType="INTEGER" property="atLeastTime" />
+    <result column="limit_time" jdbcType="INTEGER" property="limitTime" />
+    <result column="full_marks" jdbcType="INTEGER" property="fullMarks" />
+    <result column="questions" jdbcType="LONGVARCHAR" property="questions" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `uid`, uname, desc_title, desc_body, is_out_of_order1, is_out_of_order2, is_ban_turn_over, 
+    at_least_time, limit_time, full_marks, questions
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from unit
+    where `uid` = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from unit
+    where `uid` = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.leexam.entity.Unit" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into unit (uname, desc_title, desc_body, 
+      is_out_of_order1, is_out_of_order2, is_ban_turn_over, 
+      at_least_time, limit_time, full_marks, 
+      questions)
+    values (#{uname,jdbcType=VARCHAR}, #{descTitle,jdbcType=LONGVARCHAR}, #{descBody,jdbcType=LONGVARCHAR}, 
+      #{isOutOfOrder1,jdbcType=INTEGER}, #{isOutOfOrder2,jdbcType=INTEGER}, #{isBanTurnOver,jdbcType=INTEGER}, 
+      #{atLeastTime,jdbcType=INTEGER}, #{limitTime,jdbcType=INTEGER}, #{fullMarks,jdbcType=INTEGER}, 
+      #{questions,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="uid" keyProperty="uid" parameterType="com.leexam.entity.Unit" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="descTitle != null">
+        desc_title,
+      </if>
+      <if test="descBody != null">
+        desc_body,
+      </if>
+      <if test="isOutOfOrder1 != null">
+        is_out_of_order1,
+      </if>
+      <if test="isOutOfOrder2 != null">
+        is_out_of_order2,
+      </if>
+      <if test="isBanTurnOver != null">
+        is_ban_turn_over,
+      </if>
+      <if test="atLeastTime != null">
+        at_least_time,
+      </if>
+      <if test="limitTime != null">
+        limit_time,
+      </if>
+      <if test="fullMarks != null">
+        full_marks,
+      </if>
+      <if test="questions != null">
+        questions,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="descTitle != null">
+        #{descTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="descBody != null">
+        #{descBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isOutOfOrder1 != null">
+        #{isOutOfOrder1,jdbcType=INTEGER},
+      </if>
+      <if test="isOutOfOrder2 != null">
+        #{isOutOfOrder2,jdbcType=INTEGER},
+      </if>
+      <if test="isBanTurnOver != null">
+        #{isBanTurnOver,jdbcType=INTEGER},
+      </if>
+      <if test="atLeastTime != null">
+        #{atLeastTime,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="fullMarks != null">
+        #{fullMarks,jdbcType=INTEGER},
+      </if>
+      <if test="questions != null">
+        #{questions,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Unit">
+    <!--@mbg.generated-->
+    update unit
+    <set>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="descTitle != null">
+        desc_title = #{descTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="descBody != null">
+        desc_body = #{descBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isOutOfOrder1 != null">
+        is_out_of_order1 = #{isOutOfOrder1,jdbcType=INTEGER},
+      </if>
+      <if test="isOutOfOrder2 != null">
+        is_out_of_order2 = #{isOutOfOrder2,jdbcType=INTEGER},
+      </if>
+      <if test="isBanTurnOver != null">
+        is_ban_turn_over = #{isBanTurnOver,jdbcType=INTEGER},
+      </if>
+      <if test="atLeastTime != null">
+        at_least_time = #{atLeastTime,jdbcType=INTEGER},
+      </if>
+      <if test="limitTime != null">
+        limit_time = #{limitTime,jdbcType=INTEGER},
+      </if>
+      <if test="fullMarks != null">
+        full_marks = #{fullMarks,jdbcType=INTEGER},
+      </if>
+      <if test="questions != null">
+        questions = #{questions,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where `uid` = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Unit">
+    <!--@mbg.generated-->
+    update unit
+    set uname = #{uname,jdbcType=VARCHAR},
+      desc_title = #{descTitle,jdbcType=LONGVARCHAR},
+      desc_body = #{descBody,jdbcType=LONGVARCHAR},
+      is_out_of_order1 = #{isOutOfOrder1,jdbcType=INTEGER},
+      is_out_of_order2 = #{isOutOfOrder2,jdbcType=INTEGER},
+      is_ban_turn_over = #{isBanTurnOver,jdbcType=INTEGER},
+      at_least_time = #{atLeastTime,jdbcType=INTEGER},
+      limit_time = #{limitTime,jdbcType=INTEGER},
+      full_marks = #{fullMarks,jdbcType=INTEGER},
+      questions = #{questions,jdbcType=LONGVARCHAR}
+    where `uid` = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

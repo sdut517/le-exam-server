@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.QuestionsMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Questions">
+    <!--@mbg.generated-->
+    <!--@Table questions-->
+    <id column="qsid" jdbcType="INTEGER" property="qsid" />
+    <result column="qsname" jdbcType="VARCHAR" property="qsname" />
+    <result column="desc_title" jdbcType="LONGVARCHAR" property="descTitle" />
+    <result column="desc_body" jdbcType="LONGVARCHAR" property="descBody" />
+    <result column="question" jdbcType="LONGVARCHAR" property="question" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    qsid, qsname, desc_title, desc_body, question
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from questions
+    where qsid = #{qsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from questions
+    where qsid = #{qsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="qsid" keyProperty="qsid" parameterType="com.leexam.entity.Questions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into questions (qsname, desc_title, desc_body, 
+      question)
+    values (#{qsname,jdbcType=VARCHAR}, #{descTitle,jdbcType=LONGVARCHAR}, #{descBody,jdbcType=LONGVARCHAR}, 
+      #{question,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="qsid" keyProperty="qsid" parameterType="com.leexam.entity.Questions" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into questions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="qsname != null">
+        qsname,
+      </if>
+      <if test="descTitle != null">
+        desc_title,
+      </if>
+      <if test="descBody != null">
+        desc_body,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="qsname != null">
+        #{qsname,jdbcType=VARCHAR},
+      </if>
+      <if test="descTitle != null">
+        #{descTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="descBody != null">
+        #{descBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Questions">
+    <!--@mbg.generated-->
+    update questions
+    <set>
+      <if test="qsname != null">
+        qsname = #{qsname,jdbcType=VARCHAR},
+      </if>
+      <if test="descTitle != null">
+        desc_title = #{descTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="descBody != null">
+        desc_body = #{descBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qsid = #{qsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Questions">
+    <!--@mbg.generated-->
+    update questions
+    set qsname = #{qsname,jdbcType=VARCHAR},
+      desc_title = #{descTitle,jdbcType=LONGVARCHAR},
+      desc_body = #{descBody,jdbcType=LONGVARCHAR},
+      question = #{question,jdbcType=LONGVARCHAR}
+    where qsid = #{qsid,jdbcType=INTEGER}
+  </update>
+</mapper>

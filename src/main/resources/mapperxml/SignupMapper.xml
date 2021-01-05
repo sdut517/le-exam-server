@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.SignupMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Signup">
+    <!--@mbg.generated-->
+    <!--@Table signup-->
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="banner" jdbcType="VARCHAR" property="banner" />
+    <result column="sdesc" jdbcType="VARCHAR" property="sdesc" />
+    <result column="is_verify" jdbcType="INTEGER" property="isVerify" />
+    <result column="collect_info" jdbcType="LONGVARCHAR" property="collectInfo" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sid, sname, banner, sdesc, is_verify, collect_info, start_time, end_time, oid, url, 
+    `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from signup
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from signup
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="sid" keyProperty="sid" parameterType="com.leexam.entity.Signup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into signup (sname, banner, sdesc, 
+      is_verify, collect_info, start_time, 
+      end_time, oid, url, 
+      `status`)
+    values (#{sname,jdbcType=VARCHAR}, #{banner,jdbcType=VARCHAR}, #{sdesc,jdbcType=VARCHAR}, 
+      #{isVerify,jdbcType=INTEGER}, #{collectInfo,jdbcType=LONGVARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{oid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="sid" keyProperty="sid" parameterType="com.leexam.entity.Signup" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into signup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="banner != null">
+        banner,
+      </if>
+      <if test="sdesc != null">
+        sdesc,
+      </if>
+      <if test="isVerify != null">
+        is_verify,
+      </if>
+      <if test="collectInfo != null">
+        collect_info,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="banner != null">
+        #{banner,jdbcType=VARCHAR},
+      </if>
+      <if test="sdesc != null">
+        #{sdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isVerify != null">
+        #{isVerify,jdbcType=INTEGER},
+      </if>
+      <if test="collectInfo != null">
+        #{collectInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Signup">
+    <!--@mbg.generated-->
+    update signup
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="banner != null">
+        banner = #{banner,jdbcType=VARCHAR},
+      </if>
+      <if test="sdesc != null">
+        sdesc = #{sdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isVerify != null">
+        is_verify = #{isVerify,jdbcType=INTEGER},
+      </if>
+      <if test="collectInfo != null">
+        collect_info = #{collectInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Signup">
+    <!--@mbg.generated-->
+    update signup
+    set sname = #{sname,jdbcType=VARCHAR},
+      banner = #{banner,jdbcType=VARCHAR},
+      sdesc = #{sdesc,jdbcType=VARCHAR},
+      is_verify = #{isVerify,jdbcType=INTEGER},
+      collect_info = #{collectInfo,jdbcType=LONGVARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      oid = #{oid,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.ExamMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Exam">
+    <!--@mbg.generated-->
+    <!--@Table exam-->
+    <id column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="login_in_advance" jdbcType="INTEGER" property="loginInAdvance" />
+    <result column="restricted_login" jdbcType="INTEGER" property="restrictedLogin" />
+    <result column="welcome_msg" jdbcType="LONGVARCHAR" property="welcomeMsg" />
+    <result column="test_paper" jdbcType="LONGVARCHAR" property="testPaper" />
+    <result column="personal_info" jdbcType="LONGVARCHAR" property="personalInfo" />
+    <result column="e_sign_up" jdbcType="INTEGER" property="eSignUp" />
+    <result column="e_practice_mode" jdbcType="INTEGER" property="ePracticeMode" />
+    <result column="e_ommitment" jdbcType="INTEGER" property="eOmmitment" />
+    <result column="e_ommitment_body" jdbcType="LONGVARCHAR" property="eOmmitmentBody" />
+    <result column="e_locked_exam" jdbcType="INTEGER" property="eLockedExam" />
+    <result column="e_view_results" jdbcType="INTEGER" property="eViewResults" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    eid, ename, start_time, end_time, login_in_advance, restricted_login, welcome_msg, 
+    test_paper, personal_info, e_sign_up, e_practice_mode, e_ommitment, e_ommitment_body, 
+    e_locked_exam, e_view_results, url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where eid = #{eid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from exam
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="eid" keyProperty="eid" parameterType="com.leexam.entity.Exam" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into exam (ename, start_time, end_time, 
+      login_in_advance, restricted_login, welcome_msg, 
+      test_paper, personal_info, e_sign_up, 
+      e_practice_mode, e_ommitment, e_ommitment_body, 
+      e_locked_exam, e_view_results, url
+      )
+    values (#{ename,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{loginInAdvance,jdbcType=INTEGER}, #{restrictedLogin,jdbcType=INTEGER}, #{welcomeMsg,jdbcType=LONGVARCHAR}, 
+      #{testPaper,jdbcType=LONGVARCHAR}, #{personalInfo,jdbcType=LONGVARCHAR}, #{eSignUp,jdbcType=INTEGER}, 
+      #{ePracticeMode,jdbcType=INTEGER}, #{eOmmitment,jdbcType=INTEGER}, #{eOmmitmentBody,jdbcType=LONGVARCHAR}, 
+      #{eLockedExam,jdbcType=INTEGER}, #{eViewResults,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="eid" keyProperty="eid" parameterType="com.leexam.entity.Exam" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ename != null">
+        ename,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="loginInAdvance != null">
+        login_in_advance,
+      </if>
+      <if test="restrictedLogin != null">
+        restricted_login,
+      </if>
+      <if test="welcomeMsg != null">
+        welcome_msg,
+      </if>
+      <if test="testPaper != null">
+        test_paper,
+      </if>
+      <if test="personalInfo != null">
+        personal_info,
+      </if>
+      <if test="eSignUp != null">
+        e_sign_up,
+      </if>
+      <if test="ePracticeMode != null">
+        e_practice_mode,
+      </if>
+      <if test="eOmmitment != null">
+        e_ommitment,
+      </if>
+      <if test="eOmmitmentBody != null">
+        e_ommitment_body,
+      </if>
+      <if test="eLockedExam != null">
+        e_locked_exam,
+      </if>
+      <if test="eViewResults != null">
+        e_view_results,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginInAdvance != null">
+        #{loginInAdvance,jdbcType=INTEGER},
+      </if>
+      <if test="restrictedLogin != null">
+        #{restrictedLogin,jdbcType=INTEGER},
+      </if>
+      <if test="welcomeMsg != null">
+        #{welcomeMsg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="testPaper != null">
+        #{testPaper,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="personalInfo != null">
+        #{personalInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="eSignUp != null">
+        #{eSignUp,jdbcType=INTEGER},
+      </if>
+      <if test="ePracticeMode != null">
+        #{ePracticeMode,jdbcType=INTEGER},
+      </if>
+      <if test="eOmmitment != null">
+        #{eOmmitment,jdbcType=INTEGER},
+      </if>
+      <if test="eOmmitmentBody != null">
+        #{eOmmitmentBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="eLockedExam != null">
+        #{eLockedExam,jdbcType=INTEGER},
+      </if>
+      <if test="eViewResults != null">
+        #{eViewResults,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Exam">
+    <!--@mbg.generated-->
+    update exam
+    <set>
+      <if test="ename != null">
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginInAdvance != null">
+        login_in_advance = #{loginInAdvance,jdbcType=INTEGER},
+      </if>
+      <if test="restrictedLogin != null">
+        restricted_login = #{restrictedLogin,jdbcType=INTEGER},
+      </if>
+      <if test="welcomeMsg != null">
+        welcome_msg = #{welcomeMsg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="testPaper != null">
+        test_paper = #{testPaper,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="personalInfo != null">
+        personal_info = #{personalInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="eSignUp != null">
+        e_sign_up = #{eSignUp,jdbcType=INTEGER},
+      </if>
+      <if test="ePracticeMode != null">
+        e_practice_mode = #{ePracticeMode,jdbcType=INTEGER},
+      </if>
+      <if test="eOmmitment != null">
+        e_ommitment = #{eOmmitment,jdbcType=INTEGER},
+      </if>
+      <if test="eOmmitmentBody != null">
+        e_ommitment_body = #{eOmmitmentBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="eLockedExam != null">
+        e_locked_exam = #{eLockedExam,jdbcType=INTEGER},
+      </if>
+      <if test="eViewResults != null">
+        e_view_results = #{eViewResults,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Exam">
+    <!--@mbg.generated-->
+    update exam
+    set ename = #{ename,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      login_in_advance = #{loginInAdvance,jdbcType=INTEGER},
+      restricted_login = #{restrictedLogin,jdbcType=INTEGER},
+      welcome_msg = #{welcomeMsg,jdbcType=LONGVARCHAR},
+      test_paper = #{testPaper,jdbcType=LONGVARCHAR},
+      personal_info = #{personalInfo,jdbcType=LONGVARCHAR},
+      e_sign_up = #{eSignUp,jdbcType=INTEGER},
+      e_practice_mode = #{ePracticeMode,jdbcType=INTEGER},
+      e_ommitment = #{eOmmitment,jdbcType=INTEGER},
+      e_ommitment_body = #{eOmmitmentBody,jdbcType=LONGVARCHAR},
+      e_locked_exam = #{eLockedExam,jdbcType=INTEGER},
+      e_view_results = #{eViewResults,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+</mapper>
