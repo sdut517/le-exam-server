@@ -14,6 +14,16 @@ public interface UserMapper {
     @Select("select * from user WHERE email=#{email} AND pwd=#{pwd}")
     User loginByEmail(String email, String pwd);
 
+    int deleteByPrimaryKey(Integer uid);
 
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer uid);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 
 }

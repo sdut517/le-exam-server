@@ -1,11 +1,36 @@
 package com.leexam.entity;
 
+/**
+*@author 窦康泰
+*@date 2021/01/05
+*/
+/**
+    * 机构表
+    */
 public class Org {
-
+    /**
+    * 编号
+    */
     private Integer oid;
+
+    /**
+    * 机构名称
+    */
     private String oname;
+
+    /**
+    * 机构类型
+    */
     private Integer type;
+
+    /**
+    * 网站URL
+    */
     private String url;
+
+    /**
+    * 机构logo
+    */
     private String logo;
 
     public Integer getOid() {

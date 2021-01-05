@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.SignupDoMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.SignupDo">
+    <!--@mbg.generated-->
+    <!--@Table signup_do-->
+    <id column="sdid" jdbcType="INTEGER" property="sdid" />
+    <result column="eeid" jdbcType="INTEGER" property="eeid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sdid, eeid, sid, `time`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from signup_do
+    where sdid = #{sdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from signup_do
+    where sdid = #{sdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="sdid" keyProperty="sdid" parameterType="com.leexam.entity.SignupDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into signup_do (eeid, sid, `time`
+      )
+    values (#{eeid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="sdid" keyProperty="sdid" parameterType="com.leexam.entity.SignupDo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into signup_do
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eeid != null">
+        eeid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eeid != null">
+        #{eeid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.SignupDo">
+    <!--@mbg.generated-->
+    update signup_do
+    <set>
+      <if test="eeid != null">
+        eeid = #{eeid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sdid = #{sdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.SignupDo">
+    <!--@mbg.generated-->
+    update signup_do
+    set eeid = #{eeid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      `time` = #{time,jdbcType=TIMESTAMP}
+    where sdid = #{sdid,jdbcType=INTEGER}
+  </update>
+</mapper>

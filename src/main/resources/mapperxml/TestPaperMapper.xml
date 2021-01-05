@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.TestPaperMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.TestPaper">
+    <!--@mbg.generated-->
+    <!--@Table test_paper-->
+    <id column="tpid" jdbcType="INTEGER" property="tpid" />
+    <result column="tpname" jdbcType="VARCHAR" property="tpname" />
+    <result column="tpdesc" jdbcType="VARCHAR" property="tpdesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="at_least_time" jdbcType="TIMESTAMP" property="atLeastTime" />
+    <result column="limit_time" jdbcType="TIMESTAMP" property="limitTime" />
+    <result column="full_marks" jdbcType="INTEGER" property="fullMarks" />
+    <result column="notes_title" jdbcType="LONGVARCHAR" property="notesTitle" />
+    <result column="notes_body" jdbcType="LONGVARCHAR" property="notesBody" />
+    <result column="unit" jdbcType="LONGVARCHAR" property="unit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tpid, tpname, tpdesc, create_time, update_time, at_least_time, limit_time, full_marks, 
+    notes_title, notes_body, unit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from test_paper
+    where tpid = #{tpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from test_paper
+    where tpid = #{tpid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="tpid" keyProperty="tpid" parameterType="com.leexam.entity.TestPaper" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into test_paper (tpname, tpdesc, create_time, 
+      update_time, at_least_time, limit_time, 
+      full_marks, notes_title, notes_body, 
+      unit)
+    values (#{tpname,jdbcType=VARCHAR}, #{tpdesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{atLeastTime,jdbcType=TIMESTAMP}, #{limitTime,jdbcType=TIMESTAMP}, 
+      #{fullMarks,jdbcType=INTEGER}, #{notesTitle,jdbcType=LONGVARCHAR}, #{notesBody,jdbcType=LONGVARCHAR}, 
+      #{unit,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="tpid" keyProperty="tpid" parameterType="com.leexam.entity.TestPaper" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into test_paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tpname != null">
+        tpname,
+      </if>
+      <if test="tpdesc != null">
+        tpdesc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="atLeastTime != null">
+        at_least_time,
+      </if>
+      <if test="limitTime != null">
+        limit_time,
+      </if>
+      <if test="fullMarks != null">
+        full_marks,
+      </if>
+      <if test="notesTitle != null">
+        notes_title,
+      </if>
+      <if test="notesBody != null">
+        notes_body,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tpname != null">
+        #{tpname,jdbcType=VARCHAR},
+      </if>
+      <if test="tpdesc != null">
+        #{tpdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atLeastTime != null">
+        #{atLeastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitTime != null">
+        #{limitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fullMarks != null">
+        #{fullMarks,jdbcType=INTEGER},
+      </if>
+      <if test="notesTitle != null">
+        #{notesTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="notesBody != null">
+        #{notesBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.TestPaper">
+    <!--@mbg.generated-->
+    update test_paper
+    <set>
+      <if test="tpname != null">
+        tpname = #{tpname,jdbcType=VARCHAR},
+      </if>
+      <if test="tpdesc != null">
+        tpdesc = #{tpdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atLeastTime != null">
+        at_least_time = #{atLeastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="limitTime != null">
+        limit_time = #{limitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fullMarks != null">
+        full_marks = #{fullMarks,jdbcType=INTEGER},
+      </if>
+      <if test="notesTitle != null">
+        notes_title = #{notesTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="notesBody != null">
+        notes_body = #{notesBody,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tpid = #{tpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.TestPaper">
+    <!--@mbg.generated-->
+    update test_paper
+    set tpname = #{tpname,jdbcType=VARCHAR},
+      tpdesc = #{tpdesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      at_least_time = #{atLeastTime,jdbcType=TIMESTAMP},
+      limit_time = #{limitTime,jdbcType=TIMESTAMP},
+      full_marks = #{fullMarks,jdbcType=INTEGER},
+      notes_title = #{notesTitle,jdbcType=LONGVARCHAR},
+      notes_body = #{notesBody,jdbcType=LONGVARCHAR},
+      unit = #{unit,jdbcType=LONGVARCHAR}
+    where tpid = #{tpid,jdbcType=INTEGER}
+  </update>
+</mapper>

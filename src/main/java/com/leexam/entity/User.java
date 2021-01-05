@@ -1,15 +1,56 @@
 package com.leexam.entity;
-
+/**
+*@author 窦康泰
+*@date 2021/01/05
+*/
+/**
+    * 用户表
+    */
 public class User {
-
+    /**
+     * 编号
+     */
     private Integer uid;
+
+    /**
+     * 用户名
+     */
     private String uname;
+
+    /**
+     * 机构编号
+     */
     private Integer oid;
+
+    /**
+     * 邮箱
+     */
     private String email;
+
+    /**
+     * 手机号
+     */
     private String phone;
+
+    /**
+     * 姓名
+     */
     private String name;
-    private String pwd;
+
+    /**
+     * 权限编号
+     */
     private Integer pid;
+
+    /**
+     * 密码
+     */
+    private String pwd;
+
+    /**
+     * 激活状态
+     */
+    private Integer status;
 
     public Integer getUid() {
         return uid;
@@ -59,20 +100,20 @@ public class User {
         this.name = name;
     }
 
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
     public Integer getPid() {
         return pid;
     }
 
     public void setPid(Integer pid) {
         this.pid = pid;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public Integer getStatus() {
@@ -82,8 +123,4 @@ public class User {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
-    private Integer status;
-
-
 }

@@ -12,4 +12,16 @@ public interface OrgMapper {
 
     @Select("SELECT * FROM org WHERE oname = #{oname}")
     Org selectOne(String oname);
+
+    int deleteByPrimaryKey(Integer oid);
+
+    int insert(Org record);
+
+    int insertSelective(Org record);
+
+    Org selectByPrimaryKey(Integer oid);
+
+    int updateByPrimaryKeySelective(Org record);
+
+    int updateByPrimaryKey(Org record);
 }

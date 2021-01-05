@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.ExamineeMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Examinee">
+    <!--@mbg.generated-->
+    <!--@Table examinee-->
+    <id column="eeid" jdbcType="INTEGER" property="eeid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="number" jdbcType="VARCHAR" property="number" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="is_email" jdbcType="INTEGER" property="isEmail" />
+    <result column="grade" jdbcType="DOUBLE" property="grade" />
+    <result column="is_score" jdbcType="INTEGER" property="isScore" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="cost_time" jdbcType="INTEGER" property="costTime" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    eeid, `status`, `number`, `name`, eid, email, phone, gender, id, login_time, is_email, 
+    grade, is_score, create_time, finish_time, cost_time, pwd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from examinee
+    where eeid = #{eeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from examinee
+    where eeid = #{eeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="eeid" keyProperty="eeid" parameterType="com.leexam.entity.Examinee" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into examinee (`status`, `number`, `name`, 
+      eid, email, phone, 
+      gender, id, login_time, 
+      is_email, grade, is_score, 
+      create_time, finish_time, cost_time, 
+      pwd)
+    values (#{status,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{eid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, 
+      #{isEmail,jdbcType=INTEGER}, #{grade,jdbcType=DOUBLE}, #{isScore,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}, #{costTime,jdbcType=INTEGER}, 
+      #{pwd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="eeid" keyProperty="eeid" parameterType="com.leexam.entity.Examinee" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into examinee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="number != null">
+        `number`,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="eid != null">
+        eid,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="isEmail != null">
+        is_email,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="isScore != null">
+        is_score,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="finishTime != null">
+        finish_time,
+      </if>
+      <if test="costTime != null">
+        cost_time,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null">
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEmail != null">
+        #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=DOUBLE},
+      </if>
+      <if test="isScore != null">
+        #{isScore,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="costTime != null">
+        #{costTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Examinee">
+    <!--@mbg.generated-->
+    update examinee
+    <set>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        `number` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEmail != null">
+        is_email = #{isEmail,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=DOUBLE},
+      </if>
+      <if test="isScore != null">
+        is_score = #{isScore,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="costTime != null">
+        cost_time = #{costTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eeid = #{eeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Examinee">
+    <!--@mbg.generated-->
+    update examinee
+    set `status` = #{status,jdbcType=INTEGER},
+      `number` = #{number,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      id = #{id,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      is_email = #{isEmail,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=DOUBLE},
+      is_score = #{isScore,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      cost_time = #{costTime,jdbcType=INTEGER},
+      pwd = #{pwd,jdbcType=VARCHAR}
+    where eeid = #{eeid,jdbcType=INTEGER}
+  </update>
+</mapper>

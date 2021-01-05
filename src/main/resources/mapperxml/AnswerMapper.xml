@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leexam.mapper.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.leexam.entity.Answer">
+    <!--@mbg.generated-->
+    <!--@Table answer-->
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="eeid" jdbcType="INTEGER" property="eeid" />
+    <result column="qid" jdbcType="INTEGER" property="qid" />
+    <result column="ans" jdbcType="LONGVARCHAR" property="ans" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    aid, eeid, qid, ans, `time`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from answer
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from answer
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="aid" keyProperty="aid" parameterType="com.leexam.entity.Answer" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into answer (eeid, qid, ans, 
+      `time`)
+    values (#{eeid,jdbcType=INTEGER}, #{qid,jdbcType=INTEGER}, #{ans,jdbcType=LONGVARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="aid" keyProperty="aid" parameterType="com.leexam.entity.Answer" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eeid != null">
+        eeid,
+      </if>
+      <if test="qid != null">
+        qid,
+      </if>
+      <if test="ans != null">
+        ans,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eeid != null">
+        #{eeid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="ans != null">
+        #{ans,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leexam.entity.Answer">
+    <!--@mbg.generated-->
+    update answer
+    <set>
+      <if test="eeid != null">
+        eeid = #{eeid,jdbcType=INTEGER},
+      </if>
+      <if test="qid != null">
+        qid = #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="ans != null">
+        ans = #{ans,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leexam.entity.Answer">
+    <!--@mbg.generated-->
+    update answer
+    set eeid = #{eeid,jdbcType=INTEGER},
+      qid = #{qid,jdbcType=INTEGER},
+      ans = #{ans,jdbcType=LONGVARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>
