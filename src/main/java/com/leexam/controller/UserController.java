@@ -52,22 +52,33 @@ public class UserController {
     }
 
     @PostMapping("/updateuser")
-    String updateuser(
-            @RequestParam("name") String name,
-            @RequestParam("phone") String phone
+    String updateUser(
+            @RequestParam("uid") int uid,
+            @RequestParam("phone") String phone,
+            @RequestParam("new_name") String new_name
     ){
-        return userService.updateuser(name, phone);
+        return userService.updateUser(uid, phone,new_name);
     }
 
     @PostMapping("/insertmoreuser")
-    String insertmoreuser(
+    String insertMoreUser(
             @RequestParam("uname") String uname,
             @RequestParam("pid") Integer pid,
             @RequestParam("pwd") String pwd,
             @RequestParam("name") String name,
             @RequestParam("email") String email
     ){
-        return userService.insertmoreuser(uname,email,name,pid,pwd);
+        return userService.insertMoreUser(uname,email,name,pid,pwd);
+    }
+
+
+    @PostMapping("/updatepwd")
+    String updatepwd(
+            @RequestParam("uid") int uid,
+            @RequestParam("new_pwd") String new_pwd,
+            @RequestParam("enter_pwd") String enter_pwd
+    ){
+        return userService.updatePwd(uid, new_pwd,enter_pwd);
     }
 
 }

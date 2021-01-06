@@ -27,7 +27,7 @@ public interface UserMapper {
 
     int deleteByPrimaryKey(Integer uid);
 
-    @Insert("INSERT INTO user (uname,oid,email,phone,name,pid,pwd,status) VALUES(#{uname},#{oid},#{email},{phone},#{name},0,#{pwd},0)")
+    @Insert("INSERT INTO user (uname,oid,email,phone,name,pid,pwd,status) VALUES(#{uname},#{oid},#{email},#{phone},#{name},0,#{pwd},0)")
     int insert(String uname, int oid, String email, String phone, String name, String pwd);
 
     @Insert("INSERT INTO user (uname,oid,email,name,pid,pwd,status) VALUES(#{email},#{oid},#{email},#{name},#{pid},#{pwd},0)")
@@ -35,13 +35,13 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer uid);
 
-    @Update("update user set name=#{name},phone=#{phone} WHERE name=#{name}")
-    int updateByname(String name,String phone);
+    @Update("update user set name=#{new_name},phone=#{phone} WHERE uid=#{uid}")
+    int updateByname(int uid,String phone,String new_name);
 
-    @Update("update user set pwd=#{pwd} WHERE name=#{name}")
-    int updatePwd(String name,String pwd);
+    @Update("update user set pwd=#{pwd} WHERE uid=#{uid}")
+    int updatePwd(int uid,String pwd);
 
-    @Select("select pwd from user WHERE name=#{name}")
-    String selectPwdByName(String name);
+    @Select("select pwd from user WHERE uid=#{uid}")
+    String selectPwdById(int uid);
 
 }
