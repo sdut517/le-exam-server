@@ -164,4 +164,14 @@
       questions = #{questions,jdbcType=LONGVARCHAR}
     where `uid` = #{uid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUidArr" resultMap="BaseResultMap">
+    select * from unit
+    <where>
+      uid in
+      <foreach collection="uids" item="uid" separator="," open="(" close=")">
+        #{uid}
+      </foreach>
+    </where>
+  </select>
 </mapper>

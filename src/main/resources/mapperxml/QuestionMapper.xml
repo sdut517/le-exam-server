@@ -164,4 +164,14 @@
       tag = #{tag,jdbcType=LONGVARCHAR}
     where qid = #{qid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByQids" resultMap="BaseResultMap">
+    select * from question
+    <where>
+      qid in
+      <foreach collection="qids" item="qid" separator="," open="(" close=")">
+        #{qid}
+      </foreach>
+    </where>
+  </select>
 </mapper>

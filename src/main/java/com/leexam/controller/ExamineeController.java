@@ -1,6 +1,7 @@
 package com.leexam.controller;
 
 import com.leexam.entity.Examinee;
+import com.leexam.service.ExamineeService;
 import com.leexam.service.impl.ExamineeServiceImpl;
 import com.leexam.vo.ExamineeVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ExamineeController {
 
     @Autowired
-    ExamineeServiceImpl examineeService;
+    ExamineeService examineeService;
 
     @GetMapping("/page")
     public List<Examinee> selectPage(Integer start, Integer limit) {
