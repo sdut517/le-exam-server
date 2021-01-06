@@ -4,6 +4,7 @@ import com.leexam.entity.Org;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface OrgMapper {
@@ -11,10 +12,10 @@ public interface OrgMapper {
     int addOrg(String oname);
 
     @Select("SELECT * FROM org WHERE oname = #{oname}")
-    Org selectOname(String oname);
+    Org selectAllByOname(String oname);
 
     @Select("select oid from org WHERE oname=#{oname}")
-    int selectOid(String oname);
+    int selectOidByOname(String oname);
 
     int deleteByPrimaryKey(Integer oid);
 
@@ -24,7 +25,8 @@ public interface OrgMapper {
 
     Org selectByPrimaryKey(Integer oid);
 
-    int updateByPrimaryKeySelective(Org record);
+    @Update("update org set oname=#{oname},type=#{type},url=#{url},logo=#{logo} WHERE oid=#{oid}")
+    int updateByOid(Integer oid, String oname,Integer type,String url,String logo);
 
     int updateByPrimaryKey(Org record);
 }

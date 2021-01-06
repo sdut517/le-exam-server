@@ -2,6 +2,7 @@ package com.leexam.controller;
 
 import com.leexam.service.OrgService;
 import com.leexam.service.UserService;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,4 +38,36 @@ public class UserController {
         orgService.addOrg(oname);
         return  userService.register(uname, pwd, email, oname, name, phone);
     }
+
+    @PostMapping("/updateorg")
+    String updateorg(
+            @RequestParam("uname") String uname,
+            @RequestParam("oname") String oname,
+            @RequestParam("type") Integer type,
+            @RequestParam("url") String url,
+            @RequestParam("logo") String logo
+    ){
+       return orgService.updateOrg(uname,oname,type,url,logo);
+
+    }
+
+    @PostMapping("/updateuser")
+    String updateuser(
+            @RequestParam("name") String name,
+            @RequestParam("phone") String phone
+    ){
+        return userService.updateuser(name, phone);
+    }
+
+    @PostMapping("/insertmoreuser")
+    String insertmoreuser(
+            @RequestParam("uname") String uname,
+            @RequestParam("pid") Integer pid,
+            @RequestParam("pwd") String pwd,
+            @RequestParam("name") String name,
+            @RequestParam("email") String email
+    ){
+        return userService.insertmoreuser(uname,email,name,pid,pwd);
+    }
+
 }
