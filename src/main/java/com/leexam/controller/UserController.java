@@ -35,9 +35,6 @@ public class UserController {
     ) {
         pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
         orgService.addOrg(oname);
-
-
-
-        return "";
+        return  userService.register(uname, pwd, email, oname, name, phone);
     }
 }

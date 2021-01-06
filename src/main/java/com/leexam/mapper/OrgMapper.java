@@ -11,7 +11,10 @@ public interface OrgMapper {
     int addOrg(String oname);
 
     @Select("SELECT * FROM org WHERE oname = #{oname}")
-    Org selectOne(String oname);
+    Org selectOname(String oname);
+
+    @Select("select oid from org WHERE oname=#{oname}")
+    int selectOid(String oname);
 
     int deleteByPrimaryKey(Integer oid);
 

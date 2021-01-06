@@ -12,7 +12,7 @@ public class OrgServiceImpl implements OrgService {
 
     @Override
     public String addOrg(String oname) {
-        if(orgMapper.selectOne(oname)==null){
+        if(orgMapper.selectOname(oname)==null){
             orgMapper.addOrg(oname);
         }
         return "";
