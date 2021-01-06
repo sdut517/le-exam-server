@@ -234,4 +234,37 @@
       pwd = #{pwd,jdbcType=VARCHAR}
     where eeid = #{eeid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectPage" resultMap="BaseResultMap">
+    select * from examinee limit #{start},#{limit}
+  </select>
+
+  <select id="selectPageTimeLimit" resultMap="BaseResultMap">
+    SELECT * FROM `examinee`
+    <where>
+      <if test="loginTimeStart != null">
+        login_time>=#{loginTimeStart}
+      </if>
+      <if test="loginTimeEnd != null">
+        AND login_time&lt;=#{loginTimeEnd}
+      </if>
+      <if test="createTimeStart != null">
+        AND create_time>=#{createTimeStart}
+      </if>
+      <if test="createTimeEnd != null">
+        AND create_time&lt;=#{createTimeEnd}
+      </if>
+      <if test="finishTimeStart != null">
+        AND finish_time>=#{finishTimeStart}
+      </if>
+      <if test="finishTimeEnd != null">
+        AND finish_time&lt;=#{finishTimeEnd}
+      </if>
+    </where>
+        LIMIT #{start},#{limit}
+  </select>
+
+  <select id="selectByEid" resultMap="BaseResultMap">
+    SELECT * FROM `examinee` WHERE eid=#{eid}
+  </select>
 </mapper>
