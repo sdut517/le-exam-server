@@ -1,10 +1,6 @@
 package com.leexam.entity;
 
 /**
-*@author 窦康泰
-*@date 2021/01/05
-*/
-/**
     * 单元表
     */
 public class Unit {

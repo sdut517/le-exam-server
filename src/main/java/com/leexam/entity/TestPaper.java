@@ -3,10 +3,6 @@ package com.leexam.entity;
 import java.util.Date;
 
 /**
-*@author 窦康泰
-*@date 2021/01/05
-*/
-/**
     * 试卷表
     */
 public class TestPaper {

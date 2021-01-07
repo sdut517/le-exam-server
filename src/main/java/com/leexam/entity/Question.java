@@ -1,10 +1,6 @@
 package com.leexam.entity;
 
 /**
-*@author 窦康泰
-*@date 2021/01/05
-*/
-/**
     * 题目表
     */
 public class Question {

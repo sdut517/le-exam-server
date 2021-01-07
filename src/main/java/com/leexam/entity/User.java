@@ -1,8 +1,5 @@
 package com.leexam.entity;
-/**
-*@author 窦康泰
-*@date 2021/01/05
-*/
+
 /**
     * 用户表
     */

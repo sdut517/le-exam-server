@@ -1,10 +1,6 @@
 package com.leexam.entity;
 
 /**
-*@author 窦康泰
-*@date 2021/01/05
-*/
-/**
     * 权限表
     */
 public class Power {
