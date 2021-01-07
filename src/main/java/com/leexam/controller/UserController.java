@@ -44,7 +44,7 @@ public class UserController {
             @RequestParam("uname") String uname,
             @RequestParam("oname") String oname,
             @RequestParam("type") Integer type,
-            @RequestParam("url") String url,
+            @RequestParam("url") String url
     ){
        return orgService.updateOrg(uname,oname,type,url);
 

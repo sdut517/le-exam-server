@@ -42,13 +42,12 @@ public class OrgServiceImpl implements OrgService {
 
     @Override
     public String updateOrgLogo(String logo,String uname) {
-        Integer oid=userMapper.selectOidByUname(uname);
-        int i = orgMapper.updateOrgLogo(logo,oid);
-        if(i!=0) {
+        Integer oid = userMapper.selectOidByUname(uname);
+        int i = orgMapper.updateOrgLogo(logo, oid);
+        if (i != 0) {
             return "Change the success";
-        }
-        else {
+        } else {
             return "Change the failure";
         }
-
+    }
 }
