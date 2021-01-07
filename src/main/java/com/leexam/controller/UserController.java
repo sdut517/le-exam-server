@@ -21,7 +21,7 @@ public class UserController {
             @RequestParam("uname") String uname,
             @RequestParam("pwd") String pwd
     ) {
-        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+           pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
         return userService.login(uname, pwd);
     }
 
@@ -45,9 +45,8 @@ public class UserController {
             @RequestParam("oname") String oname,
             @RequestParam("type") Integer type,
             @RequestParam("url") String url,
-            @RequestParam("logo") String logo
     ){
-       return orgService.updateOrg(uname,oname,type,url,logo);
+       return orgService.updateOrg(uname,oname,type,url);
 
     }
 

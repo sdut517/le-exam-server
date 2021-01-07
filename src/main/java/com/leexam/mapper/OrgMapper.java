@@ -25,8 +25,9 @@ public interface OrgMapper {
 
     Org selectByPrimaryKey(Integer oid);
 
-    @Update("update org set oname=#{oname},type=#{type},url=#{url},logo=#{logo} WHERE oid=#{oid}")
-    int updateByOid(Integer oid, String oname,Integer type,String url,String logo);
+    @Update("update org set oname=#{oname},type=#{type},url=#{url} WHERE oid=#{oid}")
+    int updateByOid(Integer oid, String oname,Integer type,String url);
 
-    int updateByPrimaryKey(Org record);
+    @Update("update prg set logo=#w{logo} WHERE oid=#{oid}")
+    int updateOrgLogo(String logo,Integer oid);
 }

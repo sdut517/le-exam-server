@@ -17,9 +17,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(String uname, String pwd) {
         if (userMapper.loginByUname(uname, pwd) != null || userMapper.loginByEmail(uname, pwd) != null) {
-            return "success";
+            return "Successful user login";
         }
-        return "failed";
+        else {
+            return "longin failed";
+        }
     }
 
     @Override
@@ -28,25 +30,25 @@ public class UserServiceImpl implements UserService {
             int oid = orgMapper.selectOidByOname(oname);
             int i= userMapper.insert(uname, oid, email, phone, name, pwd);
             if(i!=0) {
-                return "success";
+                return "registered successfully";
             }
             else {
-                return "failed";
+                return "registration failed";
             }
         }
 
-        return "failed";
+        return "The user name or mailbox is already occupied";
     }
 
     @Override
     public String updateUser(int uid, String phone,String new_name) {
         int i=userMapper.updateByname(uid, phone,new_name);
         if(i!=0){
-            return "seccess";
+            return "Change the success";
         }
         else
             {
-                return "failed";
+                return "Change the failure";
             }
     }
 
@@ -55,10 +57,10 @@ public class UserServiceImpl implements UserService {
         int oid = userMapper.selectOidByUname(uname);
         int i=userMapper.insertMore(oid, email, name, pid, pwd);
         if(i!=0) {
-            return "seccess";
+            return "successfully added";
         }
         else {
-            return "failde";
+            return "addition failed";
         }
     }
 
@@ -68,12 +70,12 @@ public class UserServiceImpl implements UserService {
         if(oldpwd.equals(enter_pwd)){
             int i = userMapper.updatePwd(uid, new_pwd);
             if (i != 0) {
-                return "success";
+                return "Change the success";
             } else {
-                return "failed";
+                return "Change the failure";
             }
         }else {
-            return "failed";
+            return "Password input error";
         }
 
 

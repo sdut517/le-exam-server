@@ -4,11 +4,14 @@ package com.leexam.controller;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leexam.mapper.SignupMapper;
 import com.leexam.service.SignupService;
+import org.mybatis.logging.Logger;
+import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.ws.Response;
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,21 +38,7 @@ public class signupController {
         return signupService.inster(sname,start_time,end_time,banner,sdesc,is_verify,oid,url,collect_info);
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    String upload(@RequestParam("uploadFile") MultipartFile uploadFile) throws IOException {
-        if (null == uploadFile) {
-            return "上传失败，无法找到文件！";
-        }
-        // BMP、JPG、JPEG、PNG、GIF
-        String fileName = uploadFile.getOriginalFilename().toLowerCase();
-        if (!fileName.endsWith(".bmp") && !fileName.endsWith(".jpg")
-                && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
-                && !fileName.endsWith(".gif")) {
-            return "上传失败，请选择BMP、JPG、JPEG、PNG、GIF文件！";
-        }
-        //逻辑处理
-        return "成功";
-    }
+
 
 
 }
