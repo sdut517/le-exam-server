@@ -12,4 +12,9 @@ public interface QuestionService {
 
     List<Question> selectByQids(int[] qids);
 
+    String insertSelective(Question question);
+
+    String updateByPrimaryKeySelective(Question question);
+
+    String deleteByPrimaryKey(Integer qid);
 }

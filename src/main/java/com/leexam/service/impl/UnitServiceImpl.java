@@ -22,4 +22,20 @@ public class UnitServiceImpl implements UnitService {
     public List<Unit> selectByUidArr(int[] uids) {
         return unitMapper.selectByUidArr(uids);
     }
+
+    @Override
+    public String insertSelective(Unit unit) {
+        int i = unitMapper.insertSelective(unit);
+        return i > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String updateByPrimaryKeySelective(Unit unit) {
+        return unitMapper.updateByPrimaryKeySelective(unit) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String deleteByPrimaryKey(Integer uid) {
+        return unitMapper.deleteByPrimaryKey(uid) > 0 ? "success" : "error";
+    }
 }

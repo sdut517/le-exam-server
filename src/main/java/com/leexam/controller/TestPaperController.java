@@ -4,6 +4,7 @@ import com.leexam.entity.TestPaper;
 import com.leexam.service.TestPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,4 +26,18 @@ public class TestPaperController {
         return testPaperService.selectAll();
     }
 
+    @GetMapping("/delete")
+    public String deleteByPrimaryKey(Integer tpid) {
+        return testPaperService.deleteByPrimaryKey(tpid);
+    }
+
+    @PostMapping("/insert")
+    public String insertSelective(TestPaper testPaper) {
+        return testPaperService.insertSelective(testPaper);
+    }
+
+    @PostMapping("/update")
+    public String updateByPrimaryKeySelective(TestPaper testPaper) {
+        return testPaperService.updateByPrimaryKeySelective(testPaper);
+    }
 }

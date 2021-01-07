@@ -22,4 +22,19 @@ public class TestPaperServiceImpl implements TestPaperService {
     public List<TestPaper> selectAll() {
         return testPaperMapper.selectAll();
     }
+
+    @Override
+    public String deleteByPrimaryKey(Integer tpid) {
+        return testPaperMapper.deleteByPrimaryKey(tpid) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String insertSelective(TestPaper testPaper) {
+        return testPaperMapper.insertSelective(testPaper) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String updateByPrimaryKeySelective(TestPaper testPaper) {
+        return testPaperMapper.updateByPrimaryKeySelective(testPaper) > 0 ? "success" : "error";
+    }
 }

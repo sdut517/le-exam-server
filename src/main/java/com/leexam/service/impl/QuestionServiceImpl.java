@@ -22,4 +22,19 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> selectByQids(int[] qids) {
         return questionMapper.selectByQids(qids);
     }
+
+    @Override
+    public String insertSelective(Question question) {
+        return questionMapper.insertSelective(question) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String updateByPrimaryKeySelective(Question question) {
+        return questionMapper.updateByPrimaryKeySelective(question) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public String deleteByPrimaryKey(Integer qid) {
+        return questionMapper.deleteByPrimaryKey(qid) > 0 ? "success" : "error";
+    }
 }

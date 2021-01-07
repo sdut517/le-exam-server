@@ -12,4 +12,10 @@ public interface TestPaperService {
 
     List<TestPaper> selectAll();
 
+    String deleteByPrimaryKey(Integer tpid);
+
+    String insertSelective(TestPaper testPaper);
+
+    String updateByPrimaryKeySelective(TestPaper testPaper);
+
 }

@@ -12,4 +12,9 @@ public interface UnitService {
 
     List<Unit> selectByUidArr(int[] uids);
 
+    String insertSelective(Unit unit);
+
+    String updateByPrimaryKeySelective(Unit unit);
+
+    String deleteByPrimaryKey(Integer uid);
 }

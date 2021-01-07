@@ -3,10 +3,7 @@ package com.leexam.controller;
 import com.leexam.entity.Question;
 import com.leexam.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,18 @@ public class QuestionController {
         return questionService.selectByQids(qids);
     }
 
+    @PostMapping("/insert")
+    public String insertSelective(@RequestBody Question question) {
+        return questionService.insertSelective(question);
+    }
+
+    @PostMapping("/update")
+    public String updateByPrimaryKeySelective(@RequestBody Question question) {
+        return questionService.updateByPrimaryKeySelective(question);
+    }
+
+    @GetMapping("/delete")
+    public String deleteByPrimaryKey(Integer qid) {
+        return questionService.deleteByPrimaryKey(qid);
+    }
 }

@@ -3,10 +3,7 @@ package com.leexam.controller;
 import com.leexam.entity.Unit;
 import com.leexam.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,19 @@ public class UnitController {
         return unitService.selectByUidArr(uids);
     }
 
+
+    @PostMapping("/insert")
+    public String insertSelective(@RequestBody Unit unit) {
+        return unitService.insertSelective(unit);
+    }
+
+    @PostMapping("/update")
+    public String updateByPrimaryKeySelective(@RequestBody Unit unit) {
+        return unitService.updateByPrimaryKeySelective(unit);
+    }
+
+    @GetMapping("/delete")
+    public String deleteByPrimaryKey(Integer uid) {
+        return unitService.deleteByPrimaryKey(uid);
+    }
 }

@@ -8,6 +8,23 @@ package com.leexam.entity;
     * 单元表
     */
 public class Unit {
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "uid=" + uid +
+                ", uname='" + uname + '\'' +
+                ", descTitle='" + descTitle + '\'' +
+                ", descBody='" + descBody + '\'' +
+                ", isOutOfOrder1=" + isOutOfOrder1 +
+                ", isOutOfOrder2=" + isOutOfOrder2 +
+                ", isBanTurnOver=" + isBanTurnOver +
+                ", atLeastTime=" + atLeastTime +
+                ", limitTime=" + limitTime +
+                ", fullMarks=" + fullMarks +
+                ", questions='" + questions + '\'' +
+                '}';
+    }
+
     /**
     * 单元编号
     */
