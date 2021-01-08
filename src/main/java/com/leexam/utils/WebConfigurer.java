@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.io.File;
+
 /**
  * @author 窦康泰
  * @date 2021/01/08
@@ -17,6 +19,6 @@ public class WebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + imagesPath);
+        registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + new File(imagesPath).getAbsolutePath() + "/");
     }
 }
