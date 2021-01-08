@@ -18,12 +18,12 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    sid, sname, banner, sdesc, is_verify, collect_info, start_time, end_time, oid, url, 
+    sid, sname, banner, sdesc, is_verify, collect_info, start_time, end_time, oid, url,
     `status`
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from signup
     where sid = #{sid,jdbcType=INTEGER}
@@ -33,17 +33,17 @@
     delete from signup
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="sid" keyProperty="sid" parameterType="com.leexam.entity.Signup" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into signup (sname, banner, sdesc, 
-      is_verify, collect_info, start_time, 
-      end_time, oid, url, 
-      `status`)
-    values (#{sname,jdbcType=VARCHAR}, #{banner,jdbcType=VARCHAR}, #{sdesc,jdbcType=VARCHAR}, 
-      #{isVerify,jdbcType=INTEGER}, #{collectInfo,jdbcType=LONGVARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{oid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
-  </insert>
+<!--  <insert id="insert" keyColumn="sid" keyProperty="sid" parameterType="com.leexam.entity.Signup" useGeneratedKeys="true">-->
+<!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
+<!--    insert into signup (sname, banner, sdesc, -->
+<!--      is_verify, collect_info, start_time, -->
+<!--      end_time, oid, url, -->
+<!--      `status`)-->
+<!--    values (#{sname,jdbcType=VARCHAR}, #{banner,jdbcType=VARCHAR}, #{sdesc,jdbcType=VARCHAR}, -->
+<!--      #{isVerify,jdbcType=INTEGER}, #{collectInfo,jdbcType=LONGVARCHAR}, #{startTime,jdbcType=TIMESTAMP}, -->
+<!--      #{endTime,jdbcType=TIMESTAMP}, #{oid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, -->
+<!--      #{status,jdbcType=INTEGER})-->
+<!--  </insert>-->
   <insert id="insertSelective" keyColumn="sid" keyProperty="sid" parameterType="com.leexam.entity.Signup" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into signup

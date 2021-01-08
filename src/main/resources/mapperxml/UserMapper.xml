@@ -20,7 +20,7 @@
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from `user`
     where `uid` = #{uid,jdbcType=INTEGER}
@@ -30,15 +30,15 @@
     delete from `user`
     where `uid` = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.leexam.entity.User" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `user` (uname, oid, email, 
-      phone, `name`, pid, pwd, 
-      `status`)
-    values (#{uname,jdbcType=VARCHAR}, #{oid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{pwd,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
-  </insert>
+<!--  <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.leexam.entity.User" useGeneratedKeys="true">-->
+<!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
+<!--    insert into `user` (uname, oid, email,-->
+<!--      phone, `name`, pid, pwd,-->
+<!--      `status`)-->
+<!--    values (#{uname,jdbcType=VARCHAR}, #{oid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR},-->
+<!--      #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{pwd,jdbcType=VARCHAR},-->
+<!--      #{status,jdbcType=INTEGER})-->
+<!--  </insert>-->
   <insert id="insertSelective" keyColumn="uid" keyProperty="uid" parameterType="com.leexam.entity.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into `user`
