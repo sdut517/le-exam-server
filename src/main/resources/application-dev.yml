@@ -12,3 +12,6 @@ spring:
 mybatis:
   config-location: classpath:/mybatis-config.xml
   mapper-locations: classpath:/mapperxml/*.xml
+
+web:
+  upload-path: C:/Users/DKT/Desktop/images/
