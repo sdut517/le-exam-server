@@ -21,7 +21,7 @@ public class ImageUpload {
     @RequestMapping("/upload")
     public String upload(@RequestParam("img") MultipartFile imgFile) {
         String path = fileUtil.upload(imgFile);
-        return "images/" + path;
+        return "upload/images/" + path;
     }
 
 }

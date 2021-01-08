@@ -16,7 +16,7 @@ import java.util.UUID;
 public class FileUtil {
 
     @Value("${web.upload-path}")
-    private String mImagesPath;
+    private String imagesPath;
 
     /**
      * 获取文件后缀
@@ -44,30 +44,19 @@ public class FileUtil {
     public String upload(MultipartFile file){
         String fileName = file.getOriginalFilename();
         String newFileName = getFileName(fileName);
-        // 生成新的文件名
-//        String realPath = "C:/Users/DKT/Desktop/images/" + newFileName;
-        String realPath = mImagesPath + newFileName;
-
-        //使用原文件名
-//        String realPath = path + "/" + fileName;
-
-        File dest = new File(realPath);
-
-        //判断文件父目录是否存在
-        if(!dest.getParentFile().exists()){
-            dest.getParentFile().mkdir();
+        File dest = new File(imagesPath + newFileName);
+        File absoluteFile = dest.getAbsoluteFile();
+        if(!absoluteFile.getParentFile().exists()){
+            absoluteFile.getParentFile().mkdirs();
         }
 
         try {
-            //保存文件
-            file.transferTo(dest);
+            file.transferTo(absoluteFile);
             return newFileName;
         } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
         }

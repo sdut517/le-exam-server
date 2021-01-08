@@ -25,4 +25,5 @@ mybatis:
   mapper-locations: classpath:/mapperxml/*.xml
 
 web:
-  upload-path: C:/Users/DKT/Desktop/images/
+  upload-path: src/main/resources/static/upload/images/
+#  upload-path: /root/upload/images/
