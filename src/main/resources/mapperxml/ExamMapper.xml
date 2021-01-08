@@ -224,4 +224,8 @@
       url = #{url,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from exam
+    </select>
 </mapper>

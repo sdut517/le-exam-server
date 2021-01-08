@@ -34,12 +34,12 @@ public class TestPaper {
     /**
     * 至少时间
     */
-    private Date atLeastTime;
+    private Integer atLeastTime;
 
     /**
     * 限时时间
     */
-    private Date limitTime;
+    private Integer limitTime;
 
     /**
     * 满分分数
@@ -101,19 +101,19 @@ public class TestPaper {
         this.updateTime = updateTime;
     }
 
-    public Date getAtLeastTime() {
+    public Integer getAtLeastTime() {
         return atLeastTime;
     }
 
-    public void setAtLeastTime(Date atLeastTime) {
+    public void setAtLeastTime(Integer atLeastTime) {
         this.atLeastTime = atLeastTime;
     }
 
-    public Date getLimitTime() {
+    public Integer getLimitTime() {
         return limitTime;
     }
 
-    public void setLimitTime(Date limitTime) {
+    public void setLimitTime(Integer limitTime) {
         this.limitTime = limitTime;
     }
 
