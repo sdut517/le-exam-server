@@ -23,7 +23,7 @@ public interface UserMapper {
     User selectByEmail(String email);
 
     @Select("select oid from user where uname=#{uname}")
-    Integer selectOidByUname(String uname);
+    int selectOidByUname(String uname);
 
     int deleteByPrimaryKey(Integer uid);
 

@@ -1,5 +1,6 @@
 package com.leexam.controller;
 
+import com.leexam.entity.Org;
 import com.leexam.service.OrgService;
 import com.leexam.service.UserService;
 import org.apache.ibatis.annotations.Insert;
@@ -8,6 +9,8 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -21,7 +24,7 @@ public class UserController {
             @RequestParam("uname") String uname,
             @RequestParam("pwd") String pwd
     ) {
-           pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
         return userService.login(uname, pwd);
     }
 
@@ -36,8 +39,16 @@ public class UserController {
     ) {
         pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
         orgService.addOrg(oname);
-        return  userService.register(uname, pwd, email, oname, name, phone);
+        return userService.register(uname, pwd, email, oname, name, phone);
     }
+
+    @PostMapping("/selectorg")
+    List<Org> selectorg(
+            @RequestParam("uname") String uname
+    ) {
+       return  orgService.selectAllByUname(uname);
+    }
+
 
     @PostMapping("/updateorg")
     String updateorg(
