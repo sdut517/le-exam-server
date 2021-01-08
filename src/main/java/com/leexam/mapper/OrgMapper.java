@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface OrgMapper {
     @Insert("INSERT INTO org (oname, type) VALUES (#{oname}, 0)")
@@ -17,6 +19,9 @@ public interface OrgMapper {
     @Select("select oid from org WHERE oname=#{oname}")
     int selectOidByOname(String oname);
 
+    @Select("select * from org WHERE oid=#{oid}")
+    List<Org> selectAllByOid(Integer Oid);
+
     int deleteByPrimaryKey(Integer oid);
 
     int insert(Org record);
@@ -25,8 +30,9 @@ public interface OrgMapper {
 
     Org selectByPrimaryKey(Integer oid);
 
-    @Update("update org set oname=#{oname},type=#{type},url=#{url},logo=#{logo} WHERE oid=#{oid}")
-    int updateByOid(Integer oid, String oname,Integer type,String url,String logo);
+    @Update("update org set oname=#{oname},type=#{type},url=#{url} WHERE oid=#{oid}")
+    int updateByOid(Integer oid, String oname,Integer type,String url);
 
-    int updateByPrimaryKey(Org record);
+    @Update("update org set logo=#{logo} WHERE oid=#{oid}")
+    int updateOrgLogo(String logo,Integer oid);
 }
