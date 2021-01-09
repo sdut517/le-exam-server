@@ -267,4 +267,8 @@
   <select id="selectByEid" resultMap="BaseResultMap">
     SELECT * FROM `examinee` WHERE eid=#{eid}
   </select>
+
+  <select id="selectByEeidAndEid" resultMap="BaseResultMap">
+    select * from examinee where eeid=#{eeid} and eid=#{eid}
+    </select>
 </mapper>

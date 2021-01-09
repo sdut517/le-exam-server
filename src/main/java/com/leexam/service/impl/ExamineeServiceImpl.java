@@ -41,7 +41,7 @@ public class ExamineeServiceImpl implements ExamineeService {
         return examineeList;
     }
 
-    private void getTestPaperListForExam(Exam exam) {
+    public void getTestPaperListForExam(Exam exam) {
         String tpidsJsonStr = exam.getTestPaper();
         ObjectMapper objectMapper = new ObjectMapper();
         Integer[] tpids = new Integer[0];
@@ -62,5 +62,10 @@ public class ExamineeServiceImpl implements ExamineeService {
     @Override
     public List<Examinee> selectByEid(Integer eid) {
         return examineeMapper.selectByEid(eid);
+    }
+
+    @Override
+    public List<Examinee> selectByEeidAndEid(Integer eeid, Integer eid) {
+        return examineeMapper.selectByEeidAndEid(eeid, eid);
     }
 }

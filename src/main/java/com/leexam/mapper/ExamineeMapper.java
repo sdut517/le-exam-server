@@ -27,4 +27,6 @@ public interface ExamineeMapper {
     List<Examinee> selectPageTimeLimit(ExamineeVO examineeVO);
 
     List<Examinee> selectByEid(Integer eid);
+
+    List<Examinee> selectByEeidAndEid(@Param("eeid") Integer eeid, @Param("eid") Integer eid);
 }

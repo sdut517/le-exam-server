@@ -9,6 +9,7 @@ import com.leexam.mapper.ExamMapper;
 import com.leexam.mapper.ExamineeMapper;
 import com.leexam.mapper.OrgMapper;
 import com.leexam.service.ExamService;
+import com.leexam.service.ExamineeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,8 @@ public class ExamServiceImpl implements ExamService {
     OrgMapper orgMapper;
     @Autowired
     ExamineeMapper examineeMapper;
+    @Autowired
+    ExamineeServiceImpl examineeService;
 
     @Override
     public List<Exam> selectAll() {
@@ -70,6 +73,7 @@ public class ExamServiceImpl implements ExamService {
             Integer eid = exam.getEid();
             List<Examinee> examineeList = examineeMapper.selectByEid(eid);
             exam.setExamineeList(examineeList);
+            examineeService.getTestPaperListForExam(exam);
         }
         return examList;
     }
