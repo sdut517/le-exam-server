@@ -1,5 +1,7 @@
 package com.leexam.entity;
 
+import java.util.List;
+
 /**
     * 单元表
     */
@@ -19,6 +21,16 @@ public class Unit {
                 ", fullMarks=" + fullMarks +
                 ", questions='" + questions + '\'' +
                 '}';
+    }
+
+    private List<Question> questionList;
+
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 
     /**

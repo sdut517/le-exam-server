@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface QuestionService {
 
-    List<Question> selectByQids(int[] qids);
+    List<Question> selectByQids(Integer[] qids);
 
     String insertSelective(Question question);
 

@@ -6,6 +6,17 @@ import java.util.Date;
     * 考生表
     */
 public class Examinee {
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
+    private Exam exam;
+
     /**
     * 考生编号
     */

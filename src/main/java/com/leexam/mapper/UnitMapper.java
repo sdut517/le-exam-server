@@ -23,5 +23,5 @@ public interface UnitMapper {
 
     int updateByPrimaryKey(Unit record);
 
-    List<Unit> selectByUidArr(int[] uids);
+    List<Unit> selectByUidArr(Integer[] uids);
 }
