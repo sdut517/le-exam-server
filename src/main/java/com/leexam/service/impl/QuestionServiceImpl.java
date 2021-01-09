@@ -1,6 +1,7 @@
 package com.leexam.service.impl;
 
 import com.leexam.entity.Question;
+import com.leexam.mapper.QuesBankMapper;
 import com.leexam.mapper.QuestionMapper;
 import com.leexam.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,12 @@ public class QuestionServiceImpl implements QuestionService {
     public String deleteByPrimaryKey(Integer qid) {
         return questionMapper.deleteByPrimaryKey(qid) > 0 ? "success" : "error";
     }
+
+    @Override
+    public List<Question> findAll(String qtype, String tag, Integer difficult) {
+        System.out.println(questionMapper.findAll(qtype,tag,difficult));
+        return questionMapper.findAll(qtype,tag,difficult);
+    }
+
+
 }
