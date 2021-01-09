@@ -1,7 +1,10 @@
 package com.leexam.mapper;
 
 import com.leexam.entity.Question;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
 *@author 窦康泰
@@ -20,4 +23,10 @@ public interface QuestionMapper {
     int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);
+
+//    根据类型，难度，题型三个不同的查询条件进行检索
+    List<Question> findAll(@Param("tag") String tag, @Param("qtype") String qtype, @Param("difficult") Integer difficult);
+
+
+
 }

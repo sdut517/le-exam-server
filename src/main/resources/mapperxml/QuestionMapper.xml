@@ -164,4 +164,16 @@
       tag = #{tag,jdbcType=LONGVARCHAR}
     where qid = #{qid,jdbcType=INTEGER}
   </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from question where 1=1
+    <if test="tag!='all'">
+      and tag=#{tag}
+    </if>
+    <if test="qtype!='all'">
+      and qtype = #{qtype}
+    </if>
+    <if test="difficult!=0">
+      and difficult=#{difficult}
+    </if>
+  </select>
 </mapper>
