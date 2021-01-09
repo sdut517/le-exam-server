@@ -5,6 +5,8 @@ target/
 !**/src/test/**/target/
 # 各自配置不同，自己生成
 application.yml
+application-dev.yml
+application-prod.yml
 
 ### STS ###
 .apt_generated
