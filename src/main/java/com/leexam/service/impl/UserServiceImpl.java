@@ -7,6 +7,8 @@ import com.leexam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -78,6 +80,15 @@ public class UserServiceImpl implements UserService {
             return "Password input error";
         }
 
+    }
 
+    @Override
+    public List<User> selectAllByUname(String uname) {
+        return userMapper.selectAllByUname(uname);
+    }
+
+    @Override
+    public String selectUnameByEmail(String email) {
+        return userMapper.selectUnameByEmail(email);
     }
 }

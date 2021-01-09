@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     @Select("select * from user")
@@ -15,6 +17,12 @@ public interface UserMapper {
 
     @Select("select * from user WHERE email=#{email} AND pwd=#{pwd}")
     User loginByEmail(String email, String pwd);
+
+    @Select("select uname from user WHERE email=#{email}")
+    String selectUnameByEmail(String email);
+
+    @Select("select * from user WHERE uname=#{uname}")
+    List<User> selectAllByUname(String uname);
 
     @Select("select * from user WHERE uname=#{uname}")
     User selectByUname(String uname);

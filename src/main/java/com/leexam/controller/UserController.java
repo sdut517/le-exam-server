@@ -1,6 +1,7 @@
 package com.leexam.controller;
 
 import com.leexam.entity.Org;
+import com.leexam.entity.User;
 import com.leexam.service.OrgService;
 import com.leexam.service.UserService;
 import org.apache.ibatis.annotations.Insert;
@@ -89,6 +90,21 @@ public class UserController {
             @RequestParam("enter_pwd") String enter_pwd
     ){
         return userService.updatePwd(uid, new_pwd,enter_pwd);
+    }
+
+
+    @PostMapping("/selectuser")
+    List<User> selectuser(
+            @RequestParam("uname") String uname
+    ){
+        return userService.selectAllByUname(uname);
+    }
+
+    @PostMapping("/selectUserByEmail")
+    String selectUserByEmail(
+            @RequestParam("email") String email
+    ){
+        return userService.selectUnameByEmail(email);
     }
 
 }
