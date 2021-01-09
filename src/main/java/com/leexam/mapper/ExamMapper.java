@@ -24,4 +24,6 @@ public interface ExamMapper {
     int updateByPrimaryKey(Exam record);
 
     List<Exam> selectAll();
+
+    List<Exam> selectByEids(Integer[] eids);
 }
