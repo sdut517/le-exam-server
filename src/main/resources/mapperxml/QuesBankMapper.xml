@@ -104,4 +104,11 @@
       oid = #{oid,jdbcType=INTEGER}
     where qbid = #{qbid,jdbcType=INTEGER}
   </update>
+  <select id="findBytype"  resultType="java.util.HashMap">
+    select qtype as 'key',COUNT(*) as 'value' from question WHERE qid in
+    <foreach collection="q" item="t" open="(" close=")" separator=",">
+      #{t}
+    </foreach>
+    GROUP BY qtype
+  </select>
 </mapper>

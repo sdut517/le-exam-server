@@ -5,16 +5,12 @@ import com.leexam.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author 窦康泰
- * @date 2021/01/06
- */
 @RestController
 @RequestMapping("question")
 public class QuestionController {
-
     @Autowired
     QuestionService questionService;
 
@@ -37,4 +33,16 @@ public class QuestionController {
     public String deleteByPrimaryKey(Integer qid) {
         return questionService.deleteByPrimaryKey(qid);
     }
+
+    @PostMapping("/allquestion")
+    public List<Question> findAll(@RequestParam("tag")String tag,
+                                  @RequestParam("qtype")String qtype,
+                                  @RequestParam("difficult")Integer difficult){
+        System.out.println(tag);
+        System.out.println(qtype);
+        System.out.println(difficult);
+        return questionService.findAll(tag,qtype,difficult);
+
+    }
+
 }
