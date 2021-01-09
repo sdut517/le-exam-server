@@ -15,7 +15,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @PostMapping("/qids")
-    public List<Question> selectByQids(@RequestBody int[] qids) {
+    public List<Question> selectByQids(@RequestBody Integer[] qids) {
         return questionService.selectByQids(qids);
     }
 

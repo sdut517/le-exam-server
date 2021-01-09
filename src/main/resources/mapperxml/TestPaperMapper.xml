@@ -168,4 +168,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM test_paper
   </select>
+
+  <select id="selectByTpids" resultMap="BaseResultMap">
+    select * from test_paper
+    <where>
+      tpid in
+      <foreach collection="tpids" item="tpid" separator="," open="(" close=")">
+        #{tpid}
+      </foreach>
+    </where>
+    </select>
 </mapper>

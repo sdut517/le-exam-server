@@ -19,7 +19,7 @@ public class UnitController {
     UnitService unitService;
 
     @PostMapping("/uids")
-    public List<Unit> selectAll(@RequestBody int[] uids) {
+    public List<Unit> selectAll(@RequestBody Integer[] uids) {
         return unitService.selectByUidArr(uids);
     }
 

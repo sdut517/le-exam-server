@@ -19,7 +19,7 @@ public class UnitServiceImpl implements UnitService {
     UnitMapper unitMapper;
 
     @Override
-    public List<Unit> selectByUidArr(int[] uids) {
+    public List<Unit> selectByUidArr(Integer[] uids) {
         return unitMapper.selectByUidArr(uids);
     }
 

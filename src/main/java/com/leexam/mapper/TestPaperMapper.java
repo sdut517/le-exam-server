@@ -24,4 +24,6 @@ public interface TestPaperMapper {
     int updateByPrimaryKey(TestPaper record);
 
     List<TestPaper> selectAll();
+
+    List<TestPaper> selectByTpids(Integer[] tpids);
 }

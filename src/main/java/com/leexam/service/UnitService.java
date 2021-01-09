@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UnitService {
 
-    List<Unit> selectByUidArr(int[] uids);
+    List<Unit> selectByUidArr(Integer[] uids);
 
     String insertSelective(Unit unit);
 
