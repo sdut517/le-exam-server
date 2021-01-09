@@ -42,6 +42,7 @@ public class signupController {
 
     @PostMapping("/updatesignup")
     String updatesignup(
+            @RequestParam("banner") String banner,
             @RequestParam("sname") String sname,
             @RequestParam("new_sname") String new_sname,
             @RequestParam("start_time") Date start_time,
@@ -49,7 +50,7 @@ public class signupController {
             @RequestParam("sdesc") String sdesc,
             @RequestParam("is_verify") Integer is_verify
     ){
-        return signupService.updateBySname(sname,new_sname, start_time, end_time, sdesc, is_verify);
+        return signupService.updateBySname(banner,sname,new_sname, start_time, end_time, sdesc, is_verify);
     }
 
     @PostMapping("/selectsignup")

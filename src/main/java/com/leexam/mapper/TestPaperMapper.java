@@ -3,7 +3,12 @@ package com.leexam.mapper;
 import com.leexam.entity.TestPaper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 
+/**
+*@author 窦康泰
+*@date 2021/01/05
+*/
 @Mapper
 public interface TestPaperMapper {
     int deleteByPrimaryKey(Integer tpid);
@@ -17,4 +22,6 @@ public interface TestPaperMapper {
     int updateByPrimaryKeySelective(TestPaper record);
 
     int updateByPrimaryKey(TestPaper record);
+
+    List<TestPaper> selectAll();
 }

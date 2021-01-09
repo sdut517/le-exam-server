@@ -164,4 +164,8 @@
       unit = #{unit,jdbcType=LONGVARCHAR}
     where tpid = #{tpid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM test_paper
+  </select>
 </mapper>

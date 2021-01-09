@@ -21,8 +21,8 @@ public interface SignupMapper {
     @Update("update signup set banner=#{banner} WHERE sname=#{sname}")
     int updateBanner(String sname,String banner);
 
-    @Update("update signup set sname=#{new_sname},start_time=#{start_time},end_time=#{end_time},sdesc=#{sdesc},is_verify=#{is_verify} WHERE sname=#{sname}")
-    int updateBySname(String sname,String new_sname,Date start_time,Date end_time,String sdesc,Integer is_verify);
+    @Update("update signup set banner=#{banner},sname=#{new_sname},start_time=#{start_time},end_time=#{end_time},sdesc=#{sdesc},is_verify=#{is_verify} WHERE sname=#{sname}")
+    int updateBySname(String banner,String sname,String new_sname,Date start_time,Date end_time,String sdesc,Integer is_verify);
 
     @Select("select sname,start_time,end_time,status from signup WHERE oid=#{oid}")
     @Results(value = {

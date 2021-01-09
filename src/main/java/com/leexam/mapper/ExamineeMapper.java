@@ -1,7 +1,11 @@
 package com.leexam.mapper;
 
 import com.leexam.entity.Examinee;
+import com.leexam.vo.ExamineeVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 @Mapper
@@ -17,4 +21,10 @@ public interface ExamineeMapper {
     int updateByPrimaryKeySelective(Examinee record);
 
     int updateByPrimaryKey(Examinee record);
+
+    List<Examinee> selectPage(@Param("start") Integer start, @Param("limit") Integer limit);
+
+    List<Examinee> selectPageTimeLimit(ExamineeVO examineeVO);
+
+    List<Examinee> selectByEid(Integer eid);
 }
