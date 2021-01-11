@@ -17,4 +17,8 @@ public interface SignupDoMapper {
     int updateByPrimaryKeySelective(SignupDo record);
 
     int updateByPrimaryKey(SignupDo record);
+
+    int selectCountToday(Integer oid);
+
+    int selectCountSum(Integer oid);
 }

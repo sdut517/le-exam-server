@@ -6,6 +6,17 @@ import java.util.Date;
     * 考生报名表
     */
 public class SignupDo {
+
+    private Signup signup;
+
+    public Signup getSignup() {
+        return signup;
+    }
+
+    public void setSignup(Signup signup) {
+        this.signup = signup;
+    }
+
     /**
     * 编号
     */

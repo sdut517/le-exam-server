@@ -21,4 +21,13 @@ public interface ExamineeService {
 
     List<Examinee> selectByEeidAndEid( Integer eeid, Integer eid);
 
+    List<Examinee> selectExamineeSignupDoSignupByOid(Integer oid);
+
+    int selectCountByOidAndStatus(Integer oid, Integer status);
+
+    int selectCountToday(Integer oid);
+
+    int selectCountSum(Integer oid);
+
+    int selectCountTodayByOidAndStatus(Integer oid, Integer status);
 }
