@@ -8,6 +8,7 @@ import com.leexam.service.SignupService;
 import org.mybatis.logging.Logger;
 import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,8 +46,8 @@ public class signupController {
             @RequestParam("banner") String banner,
             @RequestParam("sname") String sname,
             @RequestParam("new_sname") String new_sname,
-            @RequestParam("start_time") Date start_time,
-            @RequestParam("end_time") Date end_time,
+            @RequestParam("start_time") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date start_time,
+            @RequestParam("end_time") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date end_time,
             @RequestParam("sdesc") String sdesc,
             @RequestParam("is_verify") Integer is_verify
     ){
