@@ -30,6 +30,10 @@ public interface UserMapper {
     @Select("select * from user WHERE email=#{email}")
     User selectByEmail(String email);
 
+    @Select("select uid from user WHERE email=#{email}")
+    int selectUidByEmail(String email);
+
+
     @Select("select oid from user where uname=#{uname}")
     int selectOidByUname(String uname);
 

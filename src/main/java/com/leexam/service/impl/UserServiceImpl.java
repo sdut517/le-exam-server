@@ -17,12 +17,12 @@ public class UserServiceImpl implements UserService {
     OrgMapper orgMapper;
 
     @Override
-    public String login(String uname, String pwd) {
+    public List<User> login(String uname, String pwd) {
         if (userMapper.loginByUname(uname, pwd) != null || userMapper.loginByEmail(uname, pwd) != null) {
-            return "Successful user login";
+            return userMapper.selectAllByUname(uname);
         }
         else {
-            return "longin failed";
+            return null;
         }
     }
 
@@ -82,6 +82,8 @@ public class UserServiceImpl implements UserService {
 
     }
 
+
+
     @Override
     public List<User> selectAllByUname(String uname) {
         return userMapper.selectAllByUname(uname);
@@ -90,5 +92,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public String selectUnameByEmail(String email) {
         return userMapper.selectUnameByEmail(email);
+    }
+
+    @Override
+    public int selectUidByEmail(String email) {
+        return userMapper.selectUidByEmail(email);
     }
 }
