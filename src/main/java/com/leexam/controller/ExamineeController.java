@@ -4,11 +4,13 @@ import com.leexam.entity.Examinee;
 import com.leexam.service.ExamineeService;
 import com.leexam.service.impl.ExamineeServiceImpl;
 import com.leexam.vo.ExamineeVO;
+import com.leexam.vo.ExamineeVO2;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,7 +40,7 @@ public class ExamineeController {
     }
 
     @GetMapping("/{eeid}/{eid}")
-    public List<Examinee> selectByEeidAndEid(@PathVariable("eeid") Integer eeid,@PathVariable("eid") Integer eid) {
+    public List<Examinee> selectByEeidAndEid(@PathVariable("eeid") Integer eeid, @PathVariable("eid") Integer eid) {
         return examineeService.selectByEeidAndEid(eeid, eid);
     }
 
@@ -70,5 +72,15 @@ public class ExamineeController {
     @PostMapping("/delete/byeeids")
     public int deleteByEeids(@RequestBody Integer[] eeids) {
         return examineeService.deleteByEeids(eeids);
+    }
+
+    @GetMapping("/byNameOrNumber")
+    public List<Examinee> selectByEidAndNameOrNumber(Integer eid, String nameOrNumber) {
+        return examineeService.selectByEidAndNameOrNumber(eid, nameOrNumber);
+    }
+
+    @PostMapping("/updateStatusByEeids")
+    public String updateStatusByEeids(@RequestBody ExamineeVO2 examineeVO2) {
+        return examineeService.updateStatusByEeids(examineeVO2);
     }
 }

@@ -338,4 +338,18 @@
       </foreach>
     </where>
     </delete>
+
+  <select id="selectByEidAndNameOrNumber" resultMap="BaseResultMap">
+    SELECT * FROM examinee WHERE (name LIKE #{nameOrNumber} OR number LIKE #{nameOrNumber}) AND eid=#{eid}
+  </select>
+
+  <delete id="updateStatusByEeids">
+    UPDATE examinee SET `status`=#{status}
+    <where>
+      eeid IN
+      <foreach collection="eeids" item="eeid" open="(" close=")" separator=",">
+        #{eeid}
+      </foreach>
+    </where>
+  </delete>
 </mapper>

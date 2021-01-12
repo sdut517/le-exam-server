@@ -22,4 +22,5 @@ public interface ExamService {
 
     List<Exam> selectByOid(Integer oid);
 
+    List<Exam> selectByEname(String ename);
 }

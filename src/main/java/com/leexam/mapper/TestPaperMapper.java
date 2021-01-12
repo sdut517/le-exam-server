@@ -26,4 +26,6 @@ public interface TestPaperMapper {
     List<TestPaper> selectAll();
 
     List<TestPaper> selectByTpids(Integer[] tpids);
+
+    List<TestPaper> selectByTpname(String tpname);
 }
