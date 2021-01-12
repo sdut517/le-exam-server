@@ -42,4 +42,9 @@ public class TestPaperController {
     public List<TestPaper> selectByTpids(@RequestBody Integer[] tpids) {
         return testPaperService.selectByTpids(tpids);
     }
+
+    @GetMapping("/bytpname")
+    public List<TestPaper> selectByTpname(String tpname) {
+        return testPaperService.selectByTpname(tpname);
+    }
 }

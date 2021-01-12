@@ -2,8 +2,10 @@ package com.leexam.mapper;
 
 import com.leexam.entity.Examinee;
 import com.leexam.vo.ExamineeVO;
+import com.leexam.vo.ExamineeVO2;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -41,4 +43,10 @@ public interface ExamineeMapper {
     int selectCountSum(Integer oid);
 
     int deleteByEeids(Integer[] eeids);
+
+    List<Examinee> selectByEidAndNameOrNumber(@Param("eid") Integer eid, @Param("nameOrNumber") String nameOrNumber);
+
+    int updateStatusByEeids(ExamineeVO2 examineeVO2);
+
+    List<Examinee> selectByEeids(Integer[] eeids);
 }

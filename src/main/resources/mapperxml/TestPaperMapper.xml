@@ -178,4 +178,8 @@
       </foreach>
     </where>
     </select>
+
+  <select id="selectByTpname" resultMap="BaseResultMap">
+    SELECT * FROM `test_paper` WHERE tpname LIKE #{tpname}
+  </select>
 </mapper>

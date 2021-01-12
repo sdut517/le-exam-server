@@ -48,4 +48,8 @@ public class ExamController {
         return examService.selectByOid(oid);
     }
 
+    @GetMapping("/byename")
+    public List<Exam> selectByEname(String ename) {
+        return examService.selectByEname(ename);
+    }
 }

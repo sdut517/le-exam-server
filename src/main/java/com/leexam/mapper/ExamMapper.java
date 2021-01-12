@@ -26,4 +26,6 @@ public interface ExamMapper {
     List<Exam> selectAll();
 
     List<Exam> selectByEids(Integer[] eids);
+
+    List<Exam> selectByEname(String ename);
 }

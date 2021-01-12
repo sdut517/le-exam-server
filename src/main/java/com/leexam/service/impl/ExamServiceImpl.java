@@ -77,4 +77,9 @@ public class ExamServiceImpl implements ExamService {
         }
         return examList;
     }
+
+    @Override
+    public List<Exam> selectByEname(String ename) {
+        return examMapper.selectByEname("%" + ename + "%");
+    }
 }

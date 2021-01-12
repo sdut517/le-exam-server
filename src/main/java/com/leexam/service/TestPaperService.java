@@ -19,4 +19,6 @@ public interface TestPaperService {
     String updateByPrimaryKeySelective(TestPaper testPaper);
 
     List<TestPaper> selectByTpids(Integer[] tpids);
+
+    List<TestPaper> selectByTpname(String tpname);
 }
