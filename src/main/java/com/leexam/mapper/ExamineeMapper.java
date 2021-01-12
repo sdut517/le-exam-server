@@ -47,4 +47,6 @@ public interface ExamineeMapper {
     List<Examinee> selectByEidAndNameOrNumber(@Param("eid") Integer eid, @Param("nameOrNumber") String nameOrNumber);
 
     int updateStatusByEeids(ExamineeVO2 examineeVO2);
+
+    List<Examinee> selectByEeids(Integer[] eeids);
 }

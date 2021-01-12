@@ -352,4 +352,14 @@
       </foreach>
     </where>
   </delete>
+
+  <select id="selectByEeids" resultMap="BaseResultMap">
+    select * from examinee
+    <where>
+      eeid in
+      <foreach collection="eeids" item="eeid" separator="," open="(" close=")">
+        #{eeid}
+      </foreach>
+    </where>
+  </select>
 </mapper>

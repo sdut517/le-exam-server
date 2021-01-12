@@ -37,4 +37,6 @@ public interface ExamineeService {
     List<Examinee> selectByEidAndNameOrNumber(Integer eid, String nameOrNumber);
 
     String updateStatusByEeids(ExamineeVO2 examineeVO2);
+
+    List<Examinee> selectByEeids(Integer[] eeids);
 }

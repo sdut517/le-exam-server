@@ -116,4 +116,9 @@ public class ExamineeServiceImpl implements ExamineeService {
         return examineeMapper.updateStatusByEeids(examineeVO2) > 0 ? "success" : "error";
     }
 
+    @Override
+    public List<Examinee> selectByEeids(Integer[] eeids) {
+        return examineeMapper.selectByEeids(eeids);
+    }
+
 }
