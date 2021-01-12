@@ -39,4 +39,6 @@ public interface ExamineeMapper {
     int selectCountToday(Integer oid);
 
     int selectCountSum(Integer oid);
+
+    int deleteByEeids(Integer[] eeids);
 }

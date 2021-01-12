@@ -67,4 +67,8 @@ public class ExamineeController {
         return examineeService.selectCountSum(oid);
     }
 
+    @PostMapping("/delete/byeeids")
+    public int deleteByEeids(@RequestBody Integer[] eeids) {
+        return examineeService.deleteByEeids(eeids);
+    }
 }
