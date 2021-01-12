@@ -3,6 +3,7 @@ package com.leexam.controller;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leexam.entity.Signup;
+import com.leexam.entity.SignupDo;
 import com.leexam.mapper.SignupMapper;
 import com.leexam.service.SignupService;
 import org.mybatis.logging.Logger;
@@ -61,6 +62,12 @@ public class signupController {
         return signupService.selectSignupByOid(oid);
     }
 
+    @PostMapping("/selectsignupdo")
+    List<SignupDo> selectsignupdo(
+            @RequestParam("oid") Integer oid
+    ){
+        return signupService.selectSignupDoByOid(oid);
+    }
 
 
 }

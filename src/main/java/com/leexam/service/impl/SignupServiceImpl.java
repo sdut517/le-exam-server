@@ -2,6 +2,7 @@ package com.leexam.service.impl;
 
 
 import com.leexam.entity.Signup;
+import com.leexam.entity.SignupDo;
 import com.leexam.mapper.SignupMapper;
 import com.leexam.service.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,16 @@ public class SignupServiceImpl implements SignupService {
         System.out.println(list_signup);
         if(list_signup!=null){
             return list_signup;
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<SignupDo> selectSignupDoByOid(Integer oid) {
+        List<SignupDo> list_signupDo=signupMapper.selectSignupDoByOid(oid);
+        if(list_signupDo!=null){
+            return list_signupDo;
         }else {
             return null;
         }
