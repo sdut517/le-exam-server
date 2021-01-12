@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(String uname, String pwd) {
+
         if (userMapper.loginByUname(uname, pwd) != null || userMapper.loginByEmail(uname, pwd) != null) {
             return "Successful user login";
         }
