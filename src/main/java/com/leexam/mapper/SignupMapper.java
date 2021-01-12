@@ -1,6 +1,7 @@
 package com.leexam.mapper;
 
 import com.leexam.entity.Signup;
+import com.leexam.entity.SignupDo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,8 @@ public interface SignupMapper {
             @Result(column = "status", property = "status")
     })
     List<Signup> selectSignupByOid(Integer oid);
+
+    @Select("SELECT * FROM signup_do, signup, examinee WHERE signup.oid = #{oid} AND signup_do.sid = signup.sid AND examinee.eeid = signup_do.eeid")
+    List<SignupDo> selectSignupDoByOid(Integer oid);
 
 }
