@@ -111,4 +111,10 @@
     </foreach>
     GROUP BY qtype
   </select>
+  <select id="findBydiff" resultType="int">
+    select count(*) from question where difficult=#{difficult} and qid in
+    <foreach collection="q" item="t" open="(" close=")" separator=",">
+      #{t}
+    </foreach>
+  </select>
 </mapper>

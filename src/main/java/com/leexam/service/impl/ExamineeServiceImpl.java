@@ -65,6 +65,7 @@ public class ExamineeServiceImpl implements ExamineeService {
         return examineeMapper.selectByEid(eid);
     }
 
+
     @Override
     public List<Examinee> selectByEeidAndEid(Integer eeid, Integer eid) {
         return examineeMapper.selectByEeidAndEid(eeid, eid);
@@ -98,4 +99,5 @@ public class ExamineeServiceImpl implements ExamineeService {
     public int selectCountTodayByOidAndStatus(Integer oid, Integer status) {
         return examineeMapper.selectCountTodayByOidAndStatus(oid, status);
     }
+
 }

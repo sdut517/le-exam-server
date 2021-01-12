@@ -43,11 +43,15 @@ public class QuesBankController {
     }
 
     @PostMapping("/quesdiff")
-    public List<Integer> findBydiff(){
+    public List<Integer> findBydiff(@RequestParam("qbid")int qbid) throws JsonProcessingException {
+        String s = quesBankService.findAlltype(qbid);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Integer[] integers = objectMapper.readValue(s, Integer[].class);
         List<Integer>  m = new ArrayList<Integer>();
-        int x=quesBankService.findBydiff(1);
-        int y=quesBankService.findBydiff(2);
-        int z=quesBankService.findBydiff(3);
+        int x=quesBankService.findBydiff(1,integers);
+        int y=quesBankService.findBydiff(2,integers);
+        int z=quesBankService.findBydiff(3,integers);
         m.add(x);
         m.add(y);
         m.add(z);
@@ -61,9 +65,6 @@ public class QuesBankController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Integer[] integers = objectMapper.readValue(s, Integer[].class);
-        Integer[] integers1 = Arrays.copyOf(integers, integers.length + 1);
-        integers1[integers1.length - 1] = 3;
-        String s1 = objectMapper.writeValueAsString(integers1);
 
         return quesBankService.findBytype(integers);
 
@@ -86,7 +87,7 @@ public class QuesBankController {
         return i;
     }
 
-    @PostMapping("intobank")
+    @PostMapping("/intobank")
     public int intoBank(@RequestParam("qbid")int qbid,@RequestParam("qid")int qid) throws JsonProcessingException {
         String s = quesBankService.findAlltype(qbid);
         ObjectMapper objectMapper = new ObjectMapper();

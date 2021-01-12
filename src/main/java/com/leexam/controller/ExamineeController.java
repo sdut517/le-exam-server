@@ -66,4 +66,5 @@ public class ExamineeController {
     public int selectCountSum(Integer oid) {
         return examineeService.selectCountSum(oid);
     }
+
 }

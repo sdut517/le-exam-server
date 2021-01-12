@@ -30,4 +30,5 @@ public interface ExamineeService {
     int selectCountSum(Integer oid);
 
     int selectCountTodayByOidAndStatus(Integer oid, Integer status);
+
 }
