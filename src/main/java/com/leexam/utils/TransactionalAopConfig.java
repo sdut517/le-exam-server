@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.interceptor.*;
 
 import java.util.Collections;
@@ -28,7 +29,7 @@ public class TransactionalAopConfig {
     private static final String POINTCUT_EXPRESSION = "execution(* com.leexam.service..*.*(..))";
 
     @Autowired
-    private PlatformTransactionManager transactionManager;
+    private TransactionManager transactionManager;
 
     @Bean
     public TransactionInterceptor txAdvice() {
