@@ -100,4 +100,9 @@ public class ExamineeServiceImpl implements ExamineeService {
         return examineeMapper.selectCountTodayByOidAndStatus(oid, status);
     }
 
+    @Override
+    public int deleteByEeids(Integer[] eeids) {
+        return examineeMapper.deleteByEeids(eeids);
+    }
+
 }

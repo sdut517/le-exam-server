@@ -328,4 +328,14 @@
   <select id="selectCountTodayByOidAndStatus" resultType="int">
     SELECT COUNT(DISTINCT(ee.eeid)) FROM signup s,signup_do sd,examinee ee WHERE ee.`status`=#{status} AND s.oid=#{oid} AND ee.eeid=sd.eeid AND sd.sid=s.sid AND ee.create_time >= date(now()) and ee.create_time &lt; DATE_ADD(date(now()),INTERVAL 1 DAY)
   </select>
+
+  <delete id="deleteByEeids">
+    delete from examinee
+    <where>
+      eeid in
+      <foreach collection="eeids" item="eeid" separator="," open="(" close=")">
+        #{eeid}
+      </foreach>
+    </where>
+    </delete>
 </mapper>

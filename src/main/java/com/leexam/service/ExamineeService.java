@@ -31,4 +31,5 @@ public interface ExamineeService {
 
     int selectCountTodayByOidAndStatus(Integer oid, Integer status);
 
+    int deleteByEeids(Integer[] eeids);
 }
