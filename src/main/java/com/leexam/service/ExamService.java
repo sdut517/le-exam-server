@@ -20,4 +20,6 @@ public interface ExamService {
 
     String updateByPrimaryKeySelective(Exam record);
 
+    List<Exam> selectByOid(Integer oid);
+
 }

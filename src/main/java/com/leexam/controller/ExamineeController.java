@@ -36,4 +36,9 @@ public class ExamineeController {
         return examineeService.selectByEid(eid);
     }
 
+    @GetMapping("/{eeid}/{eid}")
+    public List<Examinee> selectByEeidAndEid(@PathVariable("eeid") Integer eeid,@PathVariable("eid") Integer eid) {
+        return examineeService.selectByEeidAndEid(eeid, eid);
+    }
+
 }

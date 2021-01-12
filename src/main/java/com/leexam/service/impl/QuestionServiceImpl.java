@@ -20,7 +20,7 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionMapper questionMapper;
 
     @Override
-    public List<Question> selectByQids(int[] qids) {
+    public List<Question> selectByQids(Integer[] qids) {
         return questionMapper.selectByQids(qids);
     }
 

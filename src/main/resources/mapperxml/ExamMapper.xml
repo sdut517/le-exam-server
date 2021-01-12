@@ -228,4 +228,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from exam
     </select>
+
+  <select id="selectByEids" resultMap="BaseResultMap">
+    select * from exam
+    <where>
+      eid in
+      <foreach collection="eids" item="eid" separator="," open="(" close=")">
+        #{eid}
+      </foreach>
+    </where>
+    </select>
 </mapper>

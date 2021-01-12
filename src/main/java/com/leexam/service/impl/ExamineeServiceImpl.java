@@ -1,7 +1,13 @@
 package com.leexam.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.leexam.entity.Exam;
 import com.leexam.entity.Examinee;
+import com.leexam.entity.TestPaper;
+import com.leexam.mapper.ExamMapper;
 import com.leexam.mapper.ExamineeMapper;
+import com.leexam.mapper.TestPaperMapper;
 import com.leexam.service.ExamineeService;
 import com.leexam.vo.ExamineeVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +24,34 @@ public class ExamineeServiceImpl implements ExamineeService {
 
     @Autowired
     ExamineeMapper examineeMapper;
+    @Autowired
+    ExamMapper examMapper;
+    @Autowired
+    TestPaperMapper testPaperMapper;
 
     @Override
     public List<Examinee> selectPage(Integer start, Integer limit) {
-        return examineeMapper.selectPage(start, limit);
+        List<Examinee> examineeList = examineeMapper.selectPage(start, limit);
+        for (Examinee examinee : examineeList) {
+            Integer eid = examinee.getEid();
+            Exam exam = examMapper.selectByPrimaryKey(eid);
+            getTestPaperListForExam(exam);
+            examinee.setExam(exam);
+        }
+        return examineeList;
+    }
+
+    public void getTestPaperListForExam(Exam exam) {
+        String tpidsJsonStr = exam.getTestPaper();
+        ObjectMapper objectMapper = new ObjectMapper();
+        Integer[] tpids = new Integer[0];
+        try {
+            tpids = objectMapper.readValue(tpidsJsonStr, Integer[].class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        List<TestPaper> testPaperList = testPaperMapper.selectByTpids(tpids);
+        exam.setTestPaperList(testPaperList);
     }
 
     @Override
@@ -32,5 +62,10 @@ public class ExamineeServiceImpl implements ExamineeService {
     @Override
     public List<Examinee> selectByEid(Integer eid) {
         return examineeMapper.selectByEid(eid);
+    }
+
+    @Override
+    public List<Examinee> selectByEeidAndEid(Integer eeid, Integer eid) {
+        return examineeMapper.selectByEeidAndEid(eeid, eid);
     }
 }
