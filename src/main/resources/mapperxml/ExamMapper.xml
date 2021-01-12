@@ -238,4 +238,8 @@
       </foreach>
     </where>
     </select>
+
+  <select id="selectByEname" resultMap="BaseResultMap">
+    SELECT * FROM exam WHERE ename LIKE #{ename}
+    </select>
 </mapper>

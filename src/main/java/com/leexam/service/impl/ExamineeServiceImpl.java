@@ -10,6 +10,7 @@ import com.leexam.mapper.ExamineeMapper;
 import com.leexam.mapper.TestPaperMapper;
 import com.leexam.service.ExamineeService;
 import com.leexam.vo.ExamineeVO;
+import com.leexam.vo.ExamineeVO2;
 import org.ietf.jgss.Oid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,6 +104,21 @@ public class ExamineeServiceImpl implements ExamineeService {
     @Override
     public int deleteByEeids(Integer[] eeids) {
         return examineeMapper.deleteByEeids(eeids);
+    }
+
+    @Override
+    public List<Examinee> selectByEidAndNameOrNumber(Integer eid, String nameOrNumber) {
+        return examineeMapper.selectByEidAndNameOrNumber(eid, "%" + nameOrNumber + "%");
+    }
+
+    @Override
+    public String updateStatusByEeids(ExamineeVO2 examineeVO2) {
+        return examineeMapper.updateStatusByEeids(examineeVO2) > 0 ? "success" : "error";
+    }
+
+    @Override
+    public List<Examinee> selectByEeids(Integer[] eeids) {
+        return examineeMapper.selectByEeids(eeids);
     }
 
 }

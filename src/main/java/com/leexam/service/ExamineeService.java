@@ -2,6 +2,7 @@ package com.leexam.service;
 
 import com.leexam.entity.Examinee;
 import com.leexam.vo.ExamineeVO;
+import com.leexam.vo.ExamineeVO2;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -32,4 +33,10 @@ public interface ExamineeService {
     int selectCountTodayByOidAndStatus(Integer oid, Integer status);
 
     int deleteByEeids(Integer[] eeids);
+
+    List<Examinee> selectByEidAndNameOrNumber(Integer eid, String nameOrNumber);
+
+    String updateStatusByEeids(ExamineeVO2 examineeVO2);
+
+    List<Examinee> selectByEeids(Integer[] eeids);
 }

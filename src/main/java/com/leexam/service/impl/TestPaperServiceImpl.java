@@ -81,4 +81,9 @@ public class TestPaperServiceImpl implements TestPaperService {
     public List<TestPaper> selectByTpids(Integer[] tpids) {
         return testPaperMapper.selectByTpids(tpids);
     }
+
+    @Override
+    public List<TestPaper> selectByTpname(String tpname) {
+        return testPaperMapper.selectByTpname("%" + tpname + "%");
+    }
 }
