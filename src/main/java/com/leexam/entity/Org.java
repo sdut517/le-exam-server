@@ -29,6 +29,16 @@ public class Org {
     */
     private String logo;
 
+    private String eids;
+
+    public String getEids() {
+        return eids;
+    }
+
+    public void setEids(String eids) {
+        this.eids = eids;
+    }
+
     public Integer getOid() {
         return oid;
     }

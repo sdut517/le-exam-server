@@ -1,11 +1,22 @@
 package com.leexam.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
     * 试卷表
     */
 public class TestPaper {
+    private List<Unit> unitList;
+
+    public List<Unit> getUnitList() {
+        return unitList;
+    }
+
+    public void setUnitList(List<Unit> unitList) {
+        this.unitList = unitList;
+    }
+
     /**
     * 试卷编号
     */

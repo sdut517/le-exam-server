@@ -43,4 +43,9 @@ public class ExamController {
         return examService.updateByPrimaryKeySelective(record);
     }
 
+    @GetMapping("/byoid")
+    public List<Exam> selectByOid(Integer oid) {
+        return examService.selectByOid(oid);
+    }
+
 }

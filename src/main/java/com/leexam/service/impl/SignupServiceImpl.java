@@ -38,8 +38,8 @@ public class SignupServiceImpl implements SignupService {
     }
 
     @Override
-    public String updateBySname(String sname,String new_sname, Date start_time, Date end_time, String sdesc, Integer is_verify) {
-        int i = signupMapper.updateBySname(sname,new_sname, start_time, end_time, sdesc, is_verify);
+    public String updateBySname(String banner, String sname,String new_sname, Date start_time, Date end_time, String sdesc, Integer is_verify) {
+        int i = signupMapper.updateBySname(banner,sname,new_sname, start_time, end_time, sdesc, is_verify);
         if(i!=0){
             return "modify successfully";
         }else {

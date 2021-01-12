@@ -2,6 +2,7 @@ package com.leexam.service;
 
 import com.leexam.entity.Examinee;
 import com.leexam.vo.ExamineeVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -18,5 +19,16 @@ public interface ExamineeService {
 
     List<Examinee> selectByEid(Integer eid);
 
+    List<Examinee> selectByEeidAndEid( Integer eeid, Integer eid);
+
+    List<Examinee> selectExamineeSignupDoSignupByOid(Integer oid);
+
+    int selectCountByOidAndStatus(Integer oid, Integer status);
+
+    int selectCountToday(Integer oid);
+
+    int selectCountSum(Integer oid);
+
+    int selectCountTodayByOidAndStatus(Integer oid, Integer status);
 
 }

@@ -21,6 +21,43 @@
     <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
     <result column="cost_time" jdbcType="INTEGER" property="costTime" />
     <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <association property="exam" javaType="com.leexam.entity.Exam">
+      <id column="eid3" jdbcType="INTEGER" property="eid" />
+      <result column="ename" jdbcType="VARCHAR" property="ename" />
+      <result column="start_time3" jdbcType="TIMESTAMP" property="startTime" />
+      <result column="end_time3" jdbcType="TIMESTAMP" property="endTime" />
+      <result column="login_in_advance" jdbcType="INTEGER" property="loginInAdvance" />
+      <result column="restricted_login" jdbcType="INTEGER" property="restrictedLogin" />
+      <result column="welcome_msg" jdbcType="LONGVARCHAR" property="welcomeMsg" />
+      <result column="test_paper" jdbcType="LONGVARCHAR" property="testPaper" />
+      <result column="personal_info" jdbcType="LONGVARCHAR" property="personalInfo" />
+      <result column="e_sign_up" jdbcType="INTEGER" property="eSignUp" />
+      <result column="e_practice_mode" jdbcType="INTEGER" property="ePracticeMode" />
+      <result column="e_ommitment" jdbcType="INTEGER" property="eOmmitment" />
+      <result column="e_ommitment_body" jdbcType="LONGVARCHAR" property="eOmmitmentBody" />
+      <result column="e_locked_exam" jdbcType="INTEGER" property="eLockedExam" />
+      <result column="e_view_results" jdbcType="INTEGER" property="eViewResults" />
+      <result column="url3" jdbcType="VARCHAR" property="url" />
+    </association>
+    <collection property="signupDoList" ofType="com.leexam.entity.SignupDo">
+      <id column="sdid" jdbcType="INTEGER" property="sdid" />
+      <result column="eeid2" jdbcType="INTEGER" property="eeid" />
+      <result column="sid2" jdbcType="INTEGER" property="sid" />
+      <result column="time" jdbcType="TIMESTAMP" property="time" />
+      <association property="signup" javaType="com.leexam.entity.Signup">
+        <id column="sid" jdbcType="INTEGER" property="sid" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="banner" jdbcType="VARCHAR" property="banner" />
+        <result column="sdesc" jdbcType="VARCHAR" property="sdesc" />
+        <result column="is_verify" jdbcType="INTEGER" property="isVerify" />
+        <result column="collect_info" jdbcType="LONGVARCHAR" property="collectInfo" />
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+        <result column="oid" jdbcType="INTEGER" property="oid" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="status2" jdbcType="INTEGER" property="status" />
+      </association>
+    </collection>
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
@@ -266,5 +303,29 @@
 
   <select id="selectByEid" resultMap="BaseResultMap">
     SELECT * FROM `examinee` WHERE eid=#{eid}
+  </select>
+
+  <select id="selectByEeidAndEid" resultMap="BaseResultMap">
+    select * from examinee where eeid=#{eeid} and eid=#{eid}
+    </select>
+
+  <select id="selectExamineeSignupDoSignupByOid" resultMap="BaseResultMap">
+    SELECT ee.*,sd.sdid,sd.time,sd.eeid eeid2,sd.sid sid2,s.sid,s.sname,s.banner,s.sdesc,s.is_verify,s.collect_info,s.start_time,s.end_time,s.oid,s.url,s.`status` status2,e.eid eid3,e.ename,e.start_time start_time3,e.end_time end_time3,e.login_in_advance,e.restricted_login,e.welcome_msg,e.test_paper,e.personal_info,e.e_sign_up,e.e_practice_mode,e.e_ommitment,e.e_ommitment_body,e.e_locked_exam,e.e_view_results,e.url url3 FROM examinee ee,signup_do sd,signup s,exam e WHERE s.oid=#{oid} AND s.sid=sd.sid AND ee.eeid=sd.eeid AND e.eid=ee.eid
+  </select>
+
+  <select id="selectCountByOidAndStatus" resultType="int">
+    SELECT COUNT(DISTINCT(ee.eeid)) FROM signup s,signup_do sd,examinee ee WHERE ee.`status`=#{status} AND s.oid=#{oid} AND ee.eeid=sd.eeid AND sd.sid=s.sid
+  </select>
+
+  <select id="selectCountToday" resultType="int">
+    SELECT COUNT(DISTINCT(ee.eeid)) FROM signup s,signup_do sd,examinee ee WHERE s.oid=#{oid} AND ee.eeid=sd.eeid AND sd.sid=s.sid AND ee.create_time >= date(now()) and ee.create_time &lt; DATE_ADD(date(now()),INTERVAL 1 DAY)
+  </select>
+
+  <select id="selectCountSum" resultType="int">
+    SELECT COUNT(DISTINCT(ee.eeid)) FROM signup s,signup_do sd,examinee ee WHERE s.oid=#{oid} AND ee.eeid=sd.eeid AND sd.sid=s.sid
+  </select>
+
+  <select id="selectCountTodayByOidAndStatus" resultType="int">
+    SELECT COUNT(DISTINCT(ee.eeid)) FROM signup s,signup_do sd,examinee ee WHERE ee.`status`=#{status} AND s.oid=#{oid} AND ee.eeid=sd.eeid AND sd.sid=s.sid AND ee.create_time >= date(now()) and ee.create_time &lt; DATE_ADD(date(now()),INTERVAL 1 DAY)
   </select>
 </mapper>

@@ -1,11 +1,32 @@
 package com.leexam.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
     * 考试表
     */
 public class Exam {
+    private List<Examinee> examineeList;
+
+    public List<Examinee> getExamineeList() {
+        return examineeList;
+    }
+
+    public void setExamineeList(List<Examinee> examineeList) {
+        this.examineeList = examineeList;
+    }
+
+    private List<TestPaper> testPaperList;
+
+    public List<TestPaper> getTestPaperList() {
+        return testPaperList;
+    }
+
+    public void setTestPaperList(List<TestPaper> testPaperList) {
+        this.testPaperList = testPaperList;
+    }
+
     /**
     * 考试编号
     */

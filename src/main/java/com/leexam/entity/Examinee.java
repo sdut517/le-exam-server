@@ -1,11 +1,33 @@
 package com.leexam.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
     * 考生表
     */
 public class Examinee {
+
+    private List<SignupDo> signupDoList;
+
+    public List<SignupDo> getSignupDoList() {
+        return signupDoList;
+    }
+
+    public void setSignupDoList(List<SignupDo> signupDoList) {
+        this.signupDoList = signupDoList;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
+    private Exam exam;
+
     /**
     * 考生编号
     */

@@ -1,6 +1,7 @@
 package com.leexam.controller;
 
 import com.leexam.entity.Org;
+import com.leexam.entity.User;
 import com.leexam.service.OrgService;
 import com.leexam.service.UserService;
 import org.apache.ibatis.annotations.Insert;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -20,11 +23,14 @@ public class UserController {
     OrgService orgService;
 
     @PostMapping("/login")
-    String login(
+    List<User> login(
             @RequestParam("uname") String uname,
-            @RequestParam("pwd") String pwd
+            @RequestParam("pwd") String pwd,
+            HttpServletRequest request
     ) {
-        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+//        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+        HttpSession session = request.getSession();
+//        session.setAttribute("username", object);
         return userService.login(uname, pwd);
     }
 
@@ -89,6 +95,28 @@ public class UserController {
             @RequestParam("enter_pwd") String enter_pwd
     ){
         return userService.updatePwd(uid, new_pwd,enter_pwd);
+    }
+
+
+    @PostMapping("/selectuser")
+    List<User> selectuser(
+            @RequestParam("uname") String uname
+    ){
+        return userService.selectAllByUname(uname);
+    }
+
+    @PostMapping("/selectUserByEmail")
+    String selectUserByEmail(
+            @RequestParam("email") String email
+    ){
+        return userService.selectUnameByEmail(email);
+    }
+
+    @PostMapping("/selectUidByEmail")
+    int selectUidByEmail(
+            @RequestParam("email") String email
+    ){
+        return userService.selectUidByEmail(email);
     }
 
 }
