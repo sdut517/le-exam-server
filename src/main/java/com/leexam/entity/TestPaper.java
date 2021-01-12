@@ -7,6 +7,16 @@ import java.util.List;
     * 试卷表
     */
 public class TestPaper {
+    private Integer oid;
+
+    public Integer getOid() {
+        return oid;
+    }
+
+    public void setOid(Integer oid) {
+        this.oid = oid;
+    }
+
     private List<Unit> unitList;
 
     public List<Unit> getUnitList() {

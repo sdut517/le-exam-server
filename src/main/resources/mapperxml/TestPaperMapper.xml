@@ -15,11 +15,12 @@
     <result column="notes_title" jdbcType="LONGVARCHAR" property="notesTitle" />
     <result column="notes_body" jdbcType="LONGVARCHAR" property="notesBody" />
     <result column="unit" jdbcType="LONGVARCHAR" property="unit" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     tpid, tpname, tpdesc, create_time, update_time, at_least_time, limit_time, full_marks, 
-    notes_title, notes_body, unit
+    notes_title, notes_body, unit, oid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -38,11 +39,11 @@
     insert into test_paper (tpname, tpdesc, create_time, 
       update_time, at_least_time, limit_time, 
       full_marks, notes_title, notes_body, 
-      unit)
+      unit,oid)
     values (#{tpname,jdbcType=VARCHAR}, #{tpdesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{atLeastTime,jdbcType=TIMESTAMP}, #{limitTime,jdbcType=TIMESTAMP}, 
       #{fullMarks,jdbcType=INTEGER}, #{notesTitle,jdbcType=LONGVARCHAR}, #{notesBody,jdbcType=LONGVARCHAR}, 
-      #{unit,jdbcType=LONGVARCHAR})
+      #{unit,jdbcType=LONGVARCHAR}, #{oid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="tpid" keyProperty="tpid" parameterType="com.leexam.entity.TestPaper" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -78,6 +79,9 @@
       <if test="unit != null">
         unit,
       </if>
+      <if test="oid != null">
+        oid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tpname != null">
@@ -109,6 +113,9 @@
       </if>
       <if test="unit != null">
         #{unit,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="unit != null">
         unit = #{unit,jdbcType=LONGVARCHAR},
       </if>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
     </set>
     where tpid = #{tpid,jdbcType=INTEGER}
   </update>
@@ -161,7 +171,8 @@
       full_marks = #{fullMarks,jdbcType=INTEGER},
       notes_title = #{notesTitle,jdbcType=LONGVARCHAR},
       notes_body = #{notesBody,jdbcType=LONGVARCHAR},
-      unit = #{unit,jdbcType=LONGVARCHAR}
+      unit = #{unit,jdbcType=LONGVARCHAR},
+      oid = #{oid,jdbcType=INTEGER}
     where tpid = #{tpid,jdbcType=INTEGER}
   </update>
 
@@ -181,5 +192,9 @@
 
   <select id="selectByTpname" resultMap="BaseResultMap">
     SELECT * FROM `test_paper` WHERE tpname LIKE #{tpname}
+  </select>
+
+  <select id="selectByOid" resultMap="BaseResultMap">
+    select * from test_paper where oid = #{oid}
   </select>
 </mapper>

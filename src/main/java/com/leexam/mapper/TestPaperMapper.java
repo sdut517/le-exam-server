@@ -28,4 +28,6 @@ public interface TestPaperMapper {
     List<TestPaper> selectByTpids(Integer[] tpids);
 
     List<TestPaper> selectByTpname(String tpname);
+
+    List<TestPaper> selectByOid(Integer oid);
 }

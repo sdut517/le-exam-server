@@ -47,4 +47,9 @@ public class TestPaperController {
     public List<TestPaper> selectByTpname(String tpname) {
         return testPaperService.selectByTpname(tpname);
     }
+
+    @GetMapping("/byoid")
+    public List<TestPaper> selectByOid(Integer oid) {
+        return testPaperService.selectByOid(oid);
+    }
 }
