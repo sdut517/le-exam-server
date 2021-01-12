@@ -76,4 +76,9 @@ public class TestPaperServiceImpl implements TestPaperService {
     public String updateByPrimaryKeySelective(TestPaper testPaper) {
         return testPaperMapper.updateByPrimaryKeySelective(testPaper) > 0 ? "success" : "error";
     }
+
+    @Override
+    public List<TestPaper> selectByTpids(Integer[] tpids) {
+        return testPaperMapper.selectByTpids(tpids);
+    }
 }

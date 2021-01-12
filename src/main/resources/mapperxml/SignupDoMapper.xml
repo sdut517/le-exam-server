@@ -82,4 +82,12 @@
       `time` = #{time,jdbcType=TIMESTAMP}
     where sdid = #{sdid,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCountToday" resultType="int">
+    SELECT COUNT(*) FROM signup s,signup_do sd WHERE s.oid=#{oid} AND s.sid=sd.sid AND sd.time >= date(now()) and sd.time &lt; DATE_ADD(date(now()),INTERVAL 1 DAY)
+  </select>
+
+  <select id="selectCountSum" resultType="int">
+    SELECT COUNT(*) FROM signup s,signup_do sd WHERE s.oid=#{oid} AND s.sid=sd.sid
+  </select>
 </mapper>

@@ -35,8 +35,8 @@ public class QuesBankServiceImpl implements QuesBankService {
     }
 
     @Override
-    public int findBydiff(int difficult) {
-        return quesBankMapper.findBydiff(difficult);
+    public int findBydiff(int difficult,Integer[] q) {
+        return quesBankMapper.findBydiff(difficult,q);
     }
 
     @Override

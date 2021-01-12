@@ -12,7 +12,7 @@ public interface QuesBankService {
 //    按题库名词进行模糊查询
     List<QuesBank> findByQbname(String qbname,int oid);
 
-    int findBydiff(int difficult);
+    int findBydiff(int difficult,Integer[] q);
 
     String findAlltype(int qbid);
 

@@ -36,12 +36,10 @@ public interface QuesBankMapper {
     @ResultMap(value = {"timeMap"})
     List<QuesBank> findByQbname(String qbname,int oid);
 
-    @Select("select count(*) from question where difficult=#{difficult}")
-    int findBydiff(int difficult);
+    int findBydiff(int difficult,Integer[] q);
 
     @Select("SELECT question from ques_bank WHERE qbid = #{qbid}")
     String findAlltype(int qbid);
-
 
     List<Map<String,Object>> findBytype(Integer[] q);
 

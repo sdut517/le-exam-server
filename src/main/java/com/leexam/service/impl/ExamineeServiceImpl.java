@@ -10,6 +10,7 @@ import com.leexam.mapper.ExamineeMapper;
 import com.leexam.mapper.TestPaperMapper;
 import com.leexam.service.ExamineeService;
 import com.leexam.vo.ExamineeVO;
+import org.ietf.jgss.Oid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,8 +65,39 @@ public class ExamineeServiceImpl implements ExamineeService {
         return examineeMapper.selectByEid(eid);
     }
 
+
     @Override
     public List<Examinee> selectByEeidAndEid(Integer eeid, Integer eid) {
         return examineeMapper.selectByEeidAndEid(eeid, eid);
     }
+
+    @Override
+    public List<Examinee> selectExamineeSignupDoSignupByOid(Integer oid) {
+        List<Examinee> examineeList = examineeMapper.selectExamineeSignupDoSignupByOid(oid);
+        for (Examinee examinee : examineeList) {
+            getTestPaperListForExam(examinee.getExam());
+        }
+        return examineeList;
+    }
+
+    @Override
+    public int selectCountByOidAndStatus(Integer oid, Integer status) {
+        return examineeMapper.selectCountByOidAndStatus(oid, status);
+    }
+
+    @Override
+    public int selectCountToday(Integer oid) {
+        return examineeMapper.selectCountToday(oid);
+    }
+
+    @Override
+    public int selectCountSum(Integer oid) {
+        return examineeMapper.selectCountSum(oid);
+    }
+
+    @Override
+    public int selectCountTodayByOidAndStatus(Integer oid, Integer status) {
+        return examineeMapper.selectCountTodayByOidAndStatus(oid, status);
+    }
+
 }
