@@ -29,6 +29,8 @@ public interface QuestionMapper {
 //    根据类型，难度，题型三个不同的查询条件进行检索
     List<Question> findAll(@Param("tag") String tag, @Param("qtype") String qtype, @Param("difficult") Integer difficult);
 
-
+    //查询数据库内最后一条数据
+    @Select("select max(qid) from question")
+    int findqid();
 
 }

@@ -31,7 +31,6 @@ public class LogAdvice {
 
     @After(value = POINT_CUT)
     public void doAfterAdvice(JoinPoint joinPoint){
-        System.out.println("qiemian");
         Signature signature = joinPoint.getSignature();
         String u =  signature.getName();
         if(u.equals("login")) {
