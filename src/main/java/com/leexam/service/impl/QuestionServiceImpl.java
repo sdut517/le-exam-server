@@ -45,5 +45,10 @@ public class QuestionServiceImpl implements QuestionService {
         return questionMapper.findAll(qtype,tag,difficult);
     }
 
+    @Override
+    public int findqid(){
+        return questionMapper.findqid();
+    }
+
 
 }

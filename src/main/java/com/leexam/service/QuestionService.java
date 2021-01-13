@@ -21,4 +21,6 @@ public interface QuestionService {
 
     List<Question> findAll(String qtype, String tag, Integer difficult);
 
+    int findqid();
+
 }
