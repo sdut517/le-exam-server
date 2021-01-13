@@ -9,6 +9,16 @@ import java.util.List;
     * 考试表
     */
 public class Exam {
+    private Integer oid;
+
+    public Integer getOid() {
+        return oid;
+    }
+
+    public void setOid(Integer oid) {
+        this.oid = oid;
+    }
+
     private List<Examinee> examineeList;
 
     public List<Examinee> getExamineeList() {
