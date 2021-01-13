@@ -10,7 +10,7 @@ import java.util.Date;
 public interface LogMapper {
     int deleteByPrimaryKey(Integer lid);
 
-//    @Insert("insert into log (type,lname,lbody,ltime) VALUES (#{type},#{lname},#{lbody},#{ltime}")
+    @Insert("insert into log (type,lname,lbody,ltime) VALUES (#{type},#{lname},#{lbody},#{ltime})")
     int insert(Integer type, String lname, String lbody, Date ltime);
 
     int insertSelective(Log record);

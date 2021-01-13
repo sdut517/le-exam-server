@@ -28,9 +28,12 @@ public class UserController {
             @RequestParam("pwd") String pwd,
             HttpServletRequest request
     ) {
-//        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
         HttpSession session = request.getSession();
-//        session.setAttribute("username", object);
+//        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+           List<User> u = userService.login(uname, pwd);
+        if(u!=null){
+            session.setAttribute("username", uname);
+        }
         return userService.login(uname, pwd);
     }
 
@@ -95,6 +98,15 @@ public class UserController {
             @RequestParam("enter_pwd") String enter_pwd
     ){
         return userService.updatePwd(uid, new_pwd,enter_pwd);
+    }
+
+
+    @PostMapping("/updatepwdbyuid")
+    String updatepwdbyuid(
+            @RequestParam("uid") int uid,
+            @RequestParam("new_pwd") String new_pwd
+    ){
+        return userService.updatePwdByUid(uid, new_pwd);
     }
 
 
