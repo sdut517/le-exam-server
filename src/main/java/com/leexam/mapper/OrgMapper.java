@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
 
@@ -35,4 +36,7 @@ public interface OrgMapper {
 
     @Update("update org set logo=#{logo} WHERE oid=#{oid}")
     int updateOrgLogo(String logo,Integer oid);
+
+    @Update("update org set eids=#{eids} where oid=#{oid}")
+    int updateEidsByOid(Org org);
 }
