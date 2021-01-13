@@ -29,7 +29,7 @@ public class UserController {
             HttpServletRequest request
     ) {
         HttpSession session = request.getSession();
-//        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
+        pwd = DigestUtils.md5DigestAsHex(pwd.getBytes());
            List<User> u = userService.login(uname, pwd);
         if(u!=null){
             session.setAttribute("username", uname);
