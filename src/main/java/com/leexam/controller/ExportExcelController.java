@@ -4,13 +4,13 @@ import com.leexam.entity.Examinee;
 import com.leexam.service.ExamineeService;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,14 +27,18 @@ public class ExportExcelController {
     @Autowired
     ExamineeService examineeService;
 
+    @Value("${web.upload-path}")
+    private String filePath;
+
     @PostMapping("export")
-    public void export(@RequestBody Integer[] eeids, HttpServletResponse response) throws IOException {
+    @ResponseBody
+    public String export(@RequestBody Integer[] eeids, HttpServletResponse response) throws IOException {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("考生表");
         List<Examinee> examineeList = examineeService.selectByEeids(eeids);
 
         // 设置要导出的文件的名字
-        String fileName = "examinee" + new Date() + ".xls";
+        String fileName = "examinee" + new Date().getTime() + ".xls";
 
         // 新增数据行，并且设置单元格数据
         int rowNum = 1;
@@ -74,10 +78,21 @@ public class ExportExcelController {
             rowNum++;
         }
 
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName);
-        response.flushBuffer();
-        workbook.write(response.getOutputStream());
+//        response.setContentType("application/octet-stream");
+//        response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+//        response.flushBuffer();
+//        workbook.write(response.getOutputStream());
+
+        File absoluteFile = new File(filePath + fileName).getAbsoluteFile();
+        if(!absoluteFile.getParentFile().exists()){
+            absoluteFile.getParentFile().mkdirs();
+        }
+        if (!absoluteFile.exists()) {
+            absoluteFile.createNewFile();
+        }
+
+        workbook.write(new FileOutputStream(absoluteFile));
+        return "upload/images/" + fileName;
     }
 
 }
