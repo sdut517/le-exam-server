@@ -13,6 +13,7 @@ import com.leexam.service.ExamineeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,7 +44,19 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public String insertSelective(Exam record) {
-        return examMapper.insertSelective(record) > 0 ? "success" : "error";
+        try {
+            examMapper.insertSelective(record);
+            Org org = orgMapper.selectAllByOid(record.getOid()).get(0);
+            ObjectMapper objectMapper = new ObjectMapper();
+            Integer[] eids = objectMapper.readValue(org.getEids(), Integer[].class);
+            Integer[] newEids = Arrays.copyOf(eids, eids.length + 1);
+            newEids[newEids.length - 1] = record.getEid();
+            org.setEids(objectMapper.writeValueAsString(newEids));
+            orgMapper.updateEidsByOid(org);
+        } catch (JsonProcessingException e) {
+            return "error";
+        }
+        return "success";
     }
 
     @Override
