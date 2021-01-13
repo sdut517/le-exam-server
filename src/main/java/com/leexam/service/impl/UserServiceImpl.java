@@ -98,4 +98,14 @@ public class UserServiceImpl implements UserService {
     public int selectUidByEmail(String email) {
         return userMapper.selectUidByEmail(email);
     }
+
+    @Override
+    public String updatePwdByUid(int uid, String new_pwd) {
+            int i = userMapper.updatePwd(uid, new_pwd);
+            if (i != 0) {
+                return "Change the success";
+            } else {
+                return "Change the failure";
+            }
+    }
 }

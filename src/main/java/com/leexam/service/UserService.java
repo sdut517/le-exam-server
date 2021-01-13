@@ -15,4 +15,5 @@ public interface UserService {
     List<User> selectAllByUname(String uname);
     String selectUnameByEmail(String email);
     int selectUidByEmail(String email);
+    String updatePwdByUid(int uid,String new_pwd);
 }

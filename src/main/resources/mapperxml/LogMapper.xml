@@ -26,13 +26,13 @@
     delete from log
     where lid = #{lid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="lid" keyProperty="lid" parameterType="com.leexam.entity.Log" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into log (`type`, lname, lbody, 
-      ltime)
-    values (#{type,jdbcType=INTEGER}, #{lname,jdbcType=VARCHAR}, #{lbody,jdbcType=LONGVARCHAR}, 
-      #{ltime,jdbcType=TIMESTAMP})
-  </insert>
+<!--  <insert id="insert" keyColumn="lid" keyProperty="lid" parameterType="com.leexam.entity.Log" useGeneratedKeys="true">-->
+<!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
+<!--    insert into log (`type`, lname, lbody, -->
+<!--      ltime)-->
+<!--    values (#{type,jdbcType=INTEGER}, #{lname,jdbcType=VARCHAR}, #{lbody,jdbcType=LONGVARCHAR}, -->
+<!--      #{ltime,jdbcType=TIMESTAMP})-->
+<!--  </insert>-->
 <!--  <insert id="insertSelective" keyColumn="lid" keyProperty="lid" parameterType="com.leexam.entity.Log" useGeneratedKeys="true">-->
 <!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
 <!--    insert into log-->
