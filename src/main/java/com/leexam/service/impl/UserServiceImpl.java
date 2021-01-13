@@ -6,6 +6,7 @@ import com.leexam.mapper.UserMapper;
 import com.leexam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -69,8 +70,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public String updatePwd(int uid, String new_pwd,String enter_pwd) {
         String oldpwd = userMapper.selectPwdById(uid);
+        enter_pwd = DigestUtils.md5DigestAsHex(enter_pwd.getBytes());
         if(oldpwd.equals(enter_pwd)){
-            int i = userMapper.updatePwd(uid, new_pwd);
+            int i = userMapper.updatePwd(uid, DigestUtils.md5DigestAsHex(new_pwd.getBytes()));
             if (i != 0) {
                 return "Change the success";
             } else {
