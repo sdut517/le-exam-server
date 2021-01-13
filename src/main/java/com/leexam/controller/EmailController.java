@@ -24,4 +24,9 @@ public class EmailController {
         return emailUtil.sendEmail(toUsername, title, content);
     }
 
+    @RequestMapping("/email/html")
+    public String sendHtmlEmail(String toUsername, String title, String content) {
+        return emailUtil.sendHtmlEmail(toUsername, title, content);
+    }
+
 }

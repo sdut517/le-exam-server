@@ -1,5 +1,7 @@
 package com.leexam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -48,6 +50,7 @@ public class SignupDo {
     /**
     * 报名时间
     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date time;
     /**
      * 考生状态
@@ -92,6 +95,7 @@ public class SignupDo {
     /**
      * 登陆时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date loginTime;
 
     /**
@@ -112,11 +116,13 @@ public class SignupDo {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date createTime;
 
     /**
      * 完成时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date finishTime;
 
     /**

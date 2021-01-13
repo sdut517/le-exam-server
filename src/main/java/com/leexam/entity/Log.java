@@ -1,5 +1,7 @@
 package com.leexam.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 
@@ -30,6 +32,7 @@ public class Log {
     /**
     * 发生时间
     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date ltime;
 
     public Integer getLid() {
